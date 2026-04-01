@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useMemo } from 'react';
-import { Search, User } from 'lucide-react';
+import { Search, User, Brain, Activity } from 'lucide-react';
 import { MOCK_PATIENTS, type Patient } from '@/lib/mockData';
 import { PatientVitals } from '@/components/patient/PatientVitals';
 import { GlucoseChart } from '@/components/patient/GlucoseChart';
@@ -126,8 +126,38 @@ export default function PatientAnalysisPage() {
                             <PatientVitals patient={patient} />
                         </div>
 
-                        {/* Right Column: Visuals */}
+                        {/* Right Column: Visuals & ML Results */}
                         <div className="lg:col-span-1 space-y-8">
+                            
+                            {/* AI Predictions */}
+                            <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-100 space-y-4">
+                                <h3 className="text-lg font-bold text-slate-900 border-b border-slate-100 pb-2">AI Diagnostics</h3>
+                                
+                                <div className="space-y-4">
+                                    <div className="bg-slate-50 p-4 rounded-lg border border-slate-100">
+                                        <div className="flex items-center gap-2 mb-1 text-slate-500 text-sm font-medium">
+                                            <Activity className="w-4 h-4" /> Diabetes Status
+                                        </div>
+                                        <div className={`font-semibold ${
+                                            patient.diabetesPrediction?.includes('Normal') ? 'text-green-600' :
+                                            patient.diabetesPrediction?.includes('Pre') ? 'text-yellow-600' :
+                                            'text-red-600'
+                                        }`}>
+                                            {patient.diabetesPrediction || patient.diabetesStatus}
+                                        </div>
+                                    </div>
+
+                                    <div className="bg-indigo-50 p-4 rounded-lg border border-indigo-100">
+                                        <div className="flex items-center gap-2 mb-1 text-indigo-500 text-sm font-medium">
+                                            <Brain className="w-4 h-4" /> Emotional State
+                                        </div>
+                                        <div className="font-semibold text-indigo-900">
+                                            {patient.emotionResult || 'Not Available'}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                             <RiskGauge score={healthScore} />
 
                             <GlucoseChart

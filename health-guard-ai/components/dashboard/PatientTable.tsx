@@ -25,10 +25,10 @@ export function PatientTable() {
 
             const matchesSex = filterSex === 'All' || p.sex === filterSex;
 
-            const isCritical = p.hypoglycemia || p.hyperglycemia || p.bmi > 30;
             const matchesStatus = filterStatus === 'All' ||
-                (filterStatus === 'Critical' && isCritical) ||
-                (filterStatus === 'Stable' && !isCritical);
+                (filterStatus === 'High Risk' && p.diabetesStatus.includes('High Risk')) ||
+                (filterStatus === 'At Risk' && p.diabetesStatus.includes('At Risk')) ||
+                (filterStatus === 'Stable' && p.diabetesStatus.includes('Stable'));
 
             const ageVal = p.age;
             const min = filterAgeMin ? parseInt(filterAgeMin) : 0;
@@ -79,9 +79,10 @@ export function PatientTable() {
                             onChange={e => setFilterStatus(e.target.value)}
                             className="rounded-lg border border-slate-200 px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
                         >
-                            <option value="All">All</option>
+                            <option value="All">All Risks</option>
                             <option value="Stable">Stable</option>
-                            <option value="Critical">Critical</option>
+                            <option value="At Risk">At Risk</option>
+                            <option value="High Risk">High Risk</option>
                         </select>
                     </div>
 
@@ -112,17 +113,17 @@ export function PatientTable() {
                         <tr>
                             <th className="px-6 py-3 font-medium">Patient ID</th>
                             <th className="px-6 py-3 font-medium">Name</th>
-                            <th className="px-6 py-3 font-medium">Diabetes Status</th>
+                            <th className="px-6 py-3 font-medium">Risk Status</th>
+                            <th className="px-6 py-3 font-medium">Psychological Assessment</th>
                             <th className="px-6 py-3 font-medium">Age</th>
                             <th className="px-6 py-3 font-medium">Sex</th>
-                            <th className="px-6 py-3 font-medium">Risk Status</th>
                             <th className="px-6 py-3 font-medium text-right">Action</th>
                         </tr>
                     </thead>
                     <tbody className="divide-y divide-slate-100">
                         {paginatedPatients.length > 0 ? (
                             paginatedPatients.map((patient) => {
-                                const isCritical = patient.hypoglycemia || patient.hyperglycemia || patient.bmi > 30;
+                                const isCritical = patient.hypo_events_24h > 0 || patient.hyper_events_24h > 0 || patient.bmi > 30;
                                 return (
                                     <motion.tr
                                         key={patient.id}
@@ -133,20 +134,17 @@ export function PatientTable() {
                                         <td className="px-6 py-4 font-medium text-slate-900">{patient.id}</td>
                                         <td className="px-6 py-4 text-slate-600">{patient.name}</td>
                                         <td className="px-6 py-4">
-                                            <span className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-medium ${patient.diabetesStatus === 'Normal' ? 'bg-emerald-50 text-emerald-700' :
-                                                patient.diabetesStatus === 'Pre-diabetic' ? 'bg-yellow-50 text-yellow-700' :
-                                                    'bg-red-50 text-red-700'
-                                                }`}>
+                                            <span className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-medium ${
+                                                patient.diabetesStatus.includes('Stable') ? 'bg-emerald-50 text-emerald-700' :
+                                                patient.diabetesStatus.includes('At Risk') ? 'bg-yellow-50 text-yellow-700' :
+                                                'bg-red-50 text-red-700'
+                                            }`}>
                                                 {patient.diabetesStatus}
                                             </span>
                                         </td>
+                                        <td className="px-6 py-4 text-slate-600 font-medium whitespace-nowrap">{patient.emotionResult}</td>
                                         <td className="px-6 py-4 text-slate-600">{patient.age}</td>
                                         <td className="px-6 py-4 text-slate-600">{patient.sex}</td>
-                                        <td className="px-6 py-4">
-                                            <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${isCritical ? 'bg-red-100 text-red-800' : 'bg-emerald-100 text-emerald-800'}`}>
-                                                {isCritical ? 'Need Attention' : 'Stable'}
-                                            </span>
-                                        </td>
                                         <td className="px-6 py-4 text-right">
                                             <button
                                                 onClick={() => setSelectedPatient(patient)}
@@ -160,7 +158,7 @@ export function PatientTable() {
                             })
                         ) : (
                             <tr>
-                                <td colSpan={7} className="px-6 py-12 text-center text-slate-500">
+                                <td colSpan={6} className="px-6 py-12 text-center text-slate-500">
                                     No patients found matching your criteria.
                                 </td>
                             </tr>

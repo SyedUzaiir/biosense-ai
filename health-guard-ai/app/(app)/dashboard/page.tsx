@@ -9,7 +9,7 @@ export default function DashboardPage() {
     const stats = useMemo(() => {
         const total = MOCK_PATIENTS.length;
         const avgBmi = MOCK_PATIENTS.reduce((sum, p) => sum + p.bmi, 0) / total;
-        const critical = MOCK_PATIENTS.filter(p => p.hypoglycemia || p.hyperglycemia || p.sbp_mean > 140 || p.sbp_mean < 90 || p.bmi > 35).length;
+        const critical = MOCK_PATIENTS.filter(p => p.hypo_events_24h > 0 || p.hyper_events_24h > 0 || p.sbp_mean_24h > 140 || p.sbp_mean_24h < 90 || p.bmi > 35).length;
         const tests = total * 6; // Mock calculation
 
         return {
