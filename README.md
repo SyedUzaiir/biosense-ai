@@ -1,83 +1,74 @@
-# 🩺 HealthGuard AI — ICU Diabetes Prediction System
+# 🩺 BioSense AI: HealthGuard System
 
-## Table of Contents
-- Overview
-- Features
-- Directory structure
-- Technology stack
-- Installation
-- Usage
-- Project architecture
-- File details
-- Contributing
-- License
-- Acknowledgments
+![License](https://img.shields.io/badge/License-MIT-blue.svg) ![Next.js](https://img.shields.io/badge/Next.js-14.x-black?logo=next.js) ![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue?logo=typescript)
+
+Welcome to **BioSense AI**, a state-of-the-art multimodal clinical intelligence platform. The HealthGuard system bridges the gap between physiological data and psychological state, providing a comprehensive AI-driven assessment for both patients and clinicians.
+
+The architecture connects a Next.js frontend with robust rule-based algorithms, hardware-simulated vital signs, MATLAB model training suites, and a Python-powered Emotion Detection ML model to deliver holistic health insights.
 
 ---
 
-## Overview
-HealthGuard AI is a clinical intelligence platform for predicting diabetes risk in ICU patients and for providing patient monitoring visualizations. It pairs a Next.js TypeScript frontend with MATLAB scripts for model development and explainability.
+## 🌟 Key Features
+
+### 👨‍⚕️ Clinical Doctor Dashboard
+- **Active Patient Registry**: A real-time data table supporting search, filtering, and pagination.
+- **Risk Stratification**: Patients are dynamically grouped into `Stable 🟢`, `At Risk 🟡`, and `High Risk 🔴` using advanced weighted classification rules for diabetes vulnerability (tracking HbA1c, fasting glucose, BMI, and hypertension history).
+- **Professional Detail Modal**: Comprehensive 15-point data visualization grids broken into:
+  - *Metabolic Profile*
+  - *Glucose Analysis*
+  - *Cardiovascular Health*
+  - *Vital Signs*
+- **Clinical Terminology**: Casual identifiers are automatically replaced with professional diagnostics (e.g., `Mild Depressive Indicators` instead of "Sad", or `Elevated Stress Response` instead of "Angry").
+
+### 📱 Patient Self-Assessment Portal
+- **Secure Authentication**: PID-based routing ensures patients can only interact with their isolated datasets.
+- **Facial Emotion Capture**: Integrates with device webcams to capture images and securely route them to a local Python vision model for stress/affect analysis.
+- **Combined AI Insights**: The platform cross-references the physical diabetes risk outcome with the psychological state to output a unified medical recommendation (e.g., *"At-risk metabolic condition noted with negative emotional affect. Routine monitoring and stress interventions recommended."*).
+
+### 🧬 MATLAB Model Development Pipeline
+- Includes standalone scripts (`data_prep.m`, `train_model.m`, `explainability.m`) utilized heavily by data scientists for raw CSV aggregation, SVM/bagged-tree offline training, and generating Partial Dependence metrics for the clinical engine.
 
 ---
 
-## Features
-- Diabetes risk prediction using ensemble models and SVM
-- Real-time vital-sign monitoring (demo/mock data)
-- Interactive dashboard and charts
-- Explainability: feature importance and partial dependence plots
-- Patient registry and risk gauges
+## 🛠️ Technology Stack
+
+| Architecture Layer | Technology |
+| :--- | :--- |
+| **Frontend Framework** | Next.js (App Router), React, TypeScript |
+| **Interactive UI** | Tailwind CSS, Framer Motion, Lucide Icons |
+| **State & Persistence** | LocalStorage API (Mock Database) |
+| **Backend AI Vision** | Python API (Flask/FastAPI) |
+| **Data Science / ML** | MATLAB (Machine Learning Toolbox) |
 
 ---
 
-## Directory structure (high level)
-```
-MatHackathon/
-├── health-guard-ai/       # Next.js frontend
-│   ├── app/
-│   ├── components/
-│   ├── lib/
-│   ├── model/
-│   └── public/
-├── model/                 # MATLAB model scripts and datasets
-└── README.md              # This file
-```
+## 🚀 Installation & Setup
 
----
+### Prerequisites
+- Node.js (v18+ recommended)
+- Python 3.9+ (for Emotion API)
+- MATLAB R2020b+ (Optional, for running offline pipeline metrics)
 
-## Technology stack
-- Frontend: Next.js (App Router), React, TypeScript, Tailwind CSS
-- Visuals: Recharts, react-gauge-chart
-- ML / Models: MATLAB (Statistics & Machine Learning Toolbox)
-- Dev tools: ESLint, PostCSS, Node.js
+### 1. Frontend Setup
+```bash
+# Clone the repository
+git clone https://github.com/your-repo/biosense-ai.git
+cd biosense-ai/health-guard-ai
 
----
-
-## Installation
-
-Prerequisites
-- Node.js (recommended v20+)
-- A package manager: npm, yarn, pnpm, or bun
-- MATLAB (for model scripts; R2020b or newer recommended)
-
-Frontend setup
-1. Clone the repository using your Git client.
-2. Change to the frontend folder: health-guard-ai
-3. Install dependencies:
-```
+# Install Next.js dependencies
 npm install
-# or use your preferred package manager
-```
-4. Run the development server:
-```
+
+# Start the development server
 npm run dev
 ```
-5. Open the application in your browser at the address your local dev server reports (usually http://localhost:3000).
+Navigate to `http://localhost:3000` to access the application.
 
-Model setup (MATLAB)
-1. Open MATLAB and set the working directory to the model folder.
-2. Ensure that the dataset file diabetes_15_important_columns.csv is present in the model/datasets folder.
-3. Run the preprocessing and training scripts:
-```
+### 2. Emotion Detection API
+Ensure your Python vision server is active on `http://127.0.0.1:5000/predict-emotion`. If this server is unreachable, the Next.js platform will natively intercept the error and activate a resilient mock-fallback generator so presentations are not interrupted.
+
+### 3. MATLAB Operations
+Open MATLAB, set your active directory to `/model`, and execute:
+```matlab
 run('data_prep.m')
 run('train_model.m')
 run('explainability.m')
@@ -85,71 +76,13 @@ run('explainability.m')
 
 ---
 
-## Usage
+## 👥 Team
 
-Development
-```
-cd health-guard-ai
-npm run dev
-```
 
-Production
-```
-npm run build
-npm start
-```
 
-Frontend routes (examples)
-- Login page
-- Dashboard (patient registry and statistics)
-- Patient analysis (individual vitals and charts)
-- Risk checker (interactive form)
 
-MATLAB scripts
-- data_prep.m — data cleaning and preprocessing
-- train_model.m — model training (bagged trees, SVM)
-- explainability.m — feature importance and PDPs
-- dashboard_concept.m — MATLAB GUI prototype (optional)
 
 ---
 
-## Project architecture (summary)
-- Next.js frontend uses mock data for demos and displays results.
-- MATLAB pipeline prepares data, trains models offline, and creates explainability plots.
-- Frontend and MATLAB pieces are separate; model outputs can be exported and consumed by the frontend if desired.
-
----
-
-## File details (high level)
-- Frontend:
-  - components: StatsGrid, PatientTable, GlucoseChart, RiskGauge
-  - lib: mockData (patient generator), utils
-- Model:
-  - MATLAB scripts and datasets (diabetes_15_important_columns.csv)
-
----
-
-## Contributing
-Suggested workflow:
-1. Fork the repository
-2. Create a feature branch
-3. Commit changes with clear messages
-4. Open a pull request
-
-Coding conventions:
-- TypeScript with strict typing
-- Functional React components and hooks
-- Tailwind CSS utilities for styling
-- MATLAB scripts follow standard MATLAB style guidelines
-
----
-
-## License
-This project was created as a hackathon submission. Add a LICENSE file to specify terms when ready.
-
----
-
-## Acknowledgments
-Thanks to contributors, anonymized clinical datasets used for prototyping, and open-source libraries used during development.
-
----
+## 🛡️ License
+This repository is marked under the standard MIT License. See [LICENSE](LICENSE) for details.
