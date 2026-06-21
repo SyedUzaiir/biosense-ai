@@ -3,12 +3,17 @@ import sys
 os.environ["QT_QPA_PLATFORM"] = "offscreen"
 os.environ["TF_ENABLE_ONEDNN_OPTS"] = "0"
 import base64
-import cv2
-import numpy as np
+# Lazy OpenCV import – if it fails we keep the service running
+try:
+    import cv2  # noqa: F401
+    import numpy as np  # noqa: F401
+    _opencv_available = True
+except Exception:
+    _opencv_available = False
 from fastapi import FastAPI, File, UploadFile, HTTPException, APIRouter
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-from fer.fer import FER
+# FER is imported lazily inside the emotion endpoints
 
 # Add root/ml to sys path so we can import MLPredictor
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
@@ -50,12 +55,18 @@ def startup_event():
         print(f"Error loading ML models: {e}")
         print("Note: Run 'python ml/train.py' to generate model files.")
 
-    # Initialize FER Emotion Detector
-    try:
-        emotion_detector = FER(mtcnn=False) # mtcnn=False is faster and works well for standard face images
-        print("Emotion detector loaded successfully.")
-    except Exception as e:
-        print(f"Error loading emotion detector: {e}")
+    # Initialize FER Emotion Detector lazily
+    if _opencv_available:
+        try:
+            from fer.fer import FER
+            emotion_detector = FER(mtcnn=False)
+            print("Emotion detector loaded successfully.")
+        except Exception as e:
+            emotion_detector = None
+            print(f"Error loading emotion detector: {e}")
+    else:
+        emotion_detector = None
+        print("OpenCV not available – emotion detection disabled.")
 
 # Base router for API version 1
 v1_router = APIRouter(prefix="/api/v1")
@@ -110,9 +121,8 @@ class ImagePayload(BaseModel):
 
 def analyze_emotion_from_frame(frame) -> tuple:
     """Helper to detect emotion from cv2 frame."""
-    if emotion_detector is None:
-        return "neutral", 0.8
-        
+    if not _opencv_available or emotion_detector is None:
+        raise RuntimeError("OpenCV not available – emotion detection disabled")
     try:
         emotions = emotion_detector.detect_emotions(frame)
         if emotions:
@@ -122,8 +132,7 @@ def analyze_emotion_from_frame(frame) -> tuple:
             return best_emotion, confidence
     except Exception as e:
         print(f"Emotion detection internal error: {e}")
-        
-    return "neutral", 0.0
+    raise RuntimeError("Emotion detection failed")
 
 def map_emotion_to_clinical(emotion: str) -> str:
     """Maps raw emotions to professional clinical labels."""
@@ -142,6 +151,11 @@ def map_emotion_to_clinical(emotion: str) -> str:
 @v1_router.post("/emotion/frame")
 def predict_frame_endpoint(payload: ImagePayload):
     """Legacy compatibility endpoint for base64 webcam frames."""
+    if not _opencv_available:
+        raise HTTPException(
+            status_code=503,
+            detail="Emotion detection unavailable – OpenCV could not be imported."
+        )
     try:
         data = payload.image
         img_bytes = base64.b64decode(data.split(",")[1])
@@ -160,6 +174,11 @@ def predict_frame_endpoint(payload: ImagePayload):
 @v1_router.post("/emotion")
 async def predict_emotion_file(image: UploadFile = File(...)):
     """Standard endpoint for form-uploaded image files."""
+    if not _opencv_available:
+        raise HTTPException(
+            status_code=503,
+            detail="Emotion detection unavailable – OpenCV could not be imported."
+        )
     try:
         contents = await image.read()
         nparr = np.frombuffer(contents, np.uint8)
