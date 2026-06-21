@@ -1,0 +1,9 @@
+numpy
+pandas
+scikit-learn
+joblib
+scipy
+matplotlib
+shap
+opencv-python-headless
+fer

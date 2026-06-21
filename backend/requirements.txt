@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+python-multipart
+pydantic
+numpy
+pandas
+scikit-learn
+joblib
+scipy
+opencv-python-headless
+fer
