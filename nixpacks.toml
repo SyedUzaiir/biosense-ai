@@ -1,0 +1,11 @@
+# nixpacks.toml
+# Customize Railway / Nixpacks builder commands to ensure headless OpenCV is utilized.
+
+[phases.install]
+cmds = [
+    "python -m venv .venv",
+    ".venv/bin/pip install --upgrade pip",
+    ".venv/bin/pip install -r requirements.txt",
+    ".venv/bin/pip uninstall -y opencv-python opencv-python-headless",
+    ".venv/bin/pip install opencv-python-headless"
+]
