@@ -19,6 +19,12 @@ export function TopNav() {
                 setName(pat.name);
             }
             setRoleLabel('Patient');
+        } else if (role === 'doctor') {
+            const docName = localStorage.getItem('healthguard_doctor_name');
+            if (docName) {
+                setName(docName);
+            }
+            setRoleLabel('Senior Physician');
         }
     }, []);
 

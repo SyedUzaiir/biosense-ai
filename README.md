@@ -41,11 +41,6 @@
   <em>4. Explainability & SHAP Risk Analysis</em>
 </p>
 
-<p align="center">
-  <img src="docs/screenshots/team_section.png" alt="Team Section" width="800" />
-  <br />
-  <em>5. Creators & Team Section</em>
-</p>
 
 ---
 

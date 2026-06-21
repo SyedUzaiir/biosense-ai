@@ -31,7 +31,8 @@ export default function LoginPage() {
         if (username.toLowerCase() === 'dr john' && password === '1234') {
           localStorage.setItem('healthguard_token', 'demo-token-doc-123');
           localStorage.setItem('healthguard_role', 'doctor');
-          toast.success('Welcome back, Dr. Raheem');
+          localStorage.setItem('healthguard_doctor_name', 'Dr. John Cena');
+          toast.success('Welcome back, Dr. John Cena');
           router.push('/dashboard');
         } else {
           toast.error('Invalid doctor credentials');

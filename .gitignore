@@ -37,3 +37,8 @@ ml/artifacts/
 *.webp
 *.log
 !archive/matlab-legacy/README.md
+!docs/screenshots/*.png
+!docs/screenshots/*.jpg
+!docs/screenshots/*.jpeg
+!docs/screenshots/*.webp
+
