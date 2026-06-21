@@ -14,19 +14,19 @@ The following diagram illustrates how the frontend app, backend API routes, and 
 
 ```mermaid
 graph TD
-    subgraph Client App (Next.js)
+    subgraph "Client App (Next.js)"
         C[Next.js App UI]
         C1[Recharts Line Chart]
         C2[Risk Gauge Component]
     end
 
-    subgraph FastAPI Backend Server
+    subgraph "FastAPI Backend Server"
         API[FastAPI Application]
         FE[Clinical Fusion Engine]
         FER[FER Emotion Recognition]
     end
 
-    subgraph ML Pipeline
+    subgraph "ML Pipeline"
         PR[Imputation & Preprocessing]
         RF[Random Forest Classifier]
         SVM[SVC Calibrated Pipeline]
