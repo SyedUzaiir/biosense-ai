@@ -1,27 +1,8 @@
 # nixpacks.toml
-# Configure system package dependencies and shared library links.
+# Lock Python provider version to 3.11 and resolve OpenCV headless bindings.
 
-[phases.setup]
-nixPkgs = [
-    "...",
-    "xorg.libxcb",
-    "libGL",
-    "libGLU",
-    "glib",
-    "xorg.libX11",
-    "xorg.libXext",
-    "xorg.libXrender"
-]
-nixLibs = [
-    "...",
-    "xorg.libxcb",
-    "libGL",
-    "libGLU",
-    "glib",
-    "xorg.libX11",
-    "xorg.libXext",
-    "xorg.libXrender"
-]
+[providers.python]
+version = "3.11"
 
 [phases.install]
 cmds = [
