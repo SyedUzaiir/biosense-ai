@@ -40,9 +40,7 @@ export function RiskGauge({ score }: RiskGaugeProps) {
         >
           <PolarAngleAxis type="number" domain={[0, 100]} tick={false} />
           <RadialBar
-            minAngle={15}
-            background
-            clockWise
+
             dataKey="value"
             cornerRadius={10}
             fill="url(#colorScore)"
