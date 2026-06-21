@@ -8,9 +8,10 @@
 
 ## 🌐 Live Demo
 
-- 🚀 **Frontend:** https://your-vercel-url.vercel.app
-- ⚙️ **Backend API:** https://your-railway-url.up.railway.app
-- 📖 **API Documentation:** https://your-railway-url.up.railway.app/docs
+- 🚀 **Frontend:** https://biosenseai.vercel.app/
+- ⚙️ **Backend API:** https://biosense-ai-production.up.railway.app
+- 📖 **API Documentation:** https://biosense-ai-production.up.railway.app/docs
+
 
 ---
 
