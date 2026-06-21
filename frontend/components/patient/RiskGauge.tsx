@@ -1,9 +1,6 @@
 "use client";
 
-import dynamic from 'next/dynamic';
-// Import dynamically to avoid SSR issues with some chart libs, though react-gauge-chart might be fine.
-// Using legacy import style if needed, but try default.
-const GaugeChart = dynamic(() => import('react-gauge-chart'), { ssr: false });
+import { RadialBarChart, RadialBar, PolarAngleAxis } from 'recharts';
 
 interface RiskGaugeProps {
     score: number; // 0 to 1 (1 is bad risk? or Health Score? Prompt: "Health Score")
@@ -30,17 +27,34 @@ export function RiskGauge({ score }: RiskGaugeProps) {
         <div className="bg-white rounded-xl p-6 shadow-sm border border-slate-100 flex flex-col items-center justify-center">
             <h3 className="text-lg font-semibold text-slate-800 mb-2">Overall Health Score</h3>
             <div className="w-full max-w-[300px]">
-                <GaugeChart
-                    id="gauge-chart1"
-                    nrOfLevels={3}
-                    percent={score}
-                    colors={["#ef4444", "#eab308", "#22c55e"]}
-                    arcWidth={0.3}
-                    textColor="#1e293b"
-                    needleColor="#94a3b8"
-                    needleBaseColor="#94a3b8"
-                    formatTextValue={(val: string) => `${val}%`}
-                />
+                <RadialBarChart
+          width={300}
+          height={300}
+          cx="50%"
+          cy="50%"
+          innerRadius="70%"
+          outerRadius="80%"
+          startAngle={180}
+          endAngle={0}
+          data={[{ name: 'score', value: score * 100 }]}
+        >
+          <PolarAngleAxis type="number" domain={[0, 100]} tick={false} />
+          <RadialBar
+            minAngle={15}
+            background
+            clockWise
+            dataKey="value"
+            cornerRadius={10}
+            fill="url(#colorScore)"
+          />
+          <defs>
+            <linearGradient id="colorScore" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#22c55e" />
+              <stop offset="50%" stopColor="#eab308" />
+              <stop offset="100%" stopColor="#ef4444" />
+            </linearGradient>
+          </defs>
+        </RadialBarChart>
             </div>
             <p className="text-sm text-slate-500 mt-2 text-center">
                 Based on BMI, Glucose, and BP readings.
