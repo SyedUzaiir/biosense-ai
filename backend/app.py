@@ -1,5 +1,7 @@
 import os
 import sys
+os.environ["QT_QPA_PLATFORM"] = "offscreen"
+os.environ["TF_ENABLE_ONEDNN_OPTS"] = "0"
 import base64
 import cv2
 import numpy as np

@@ -1,10 +1,22 @@
 # nixpacks.toml
-# Configure system libraries and package installation overrides.
+# Configure system package dependencies and shared library links.
 
 [phases.setup]
-nixLibs = [
+nixPkgs = [
+    "...",
     "xorg.libxcb",
     "libGL",
+    "libGLU",
+    "glib",
+    "xorg.libX11",
+    "xorg.libXext",
+    "xorg.libXrender"
+]
+nixLibs = [
+    "...",
+    "xorg.libxcb",
+    "libGL",
+    "libGLU",
     "glib",
     "xorg.libX11",
     "xorg.libXext",
