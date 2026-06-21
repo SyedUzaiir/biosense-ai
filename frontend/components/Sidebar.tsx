@@ -21,7 +21,7 @@ export function Sidebar() {
             <div className="flex h-16 items-center justify-center border-b border-slate-100 px-6">
                 <div className="flex items-center gap-2 font-bold text-xl text-blue-600">
                     <HeartPulse className="h-8 w-8 text-blue-500" />
-                    <span>HealthGuard AI</span>
+                    <span>BioSense AI</span>
                 </div>
             </div>
 

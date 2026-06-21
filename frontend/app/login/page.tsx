@@ -69,7 +69,7 @@ export default function LoginPage() {
           <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-blue-500 shadow-inner">
             <HeartPulse className="h-8 w-8 text-white" />
           </div>
-          <h1 className="text-3xl font-bold">HealthGuard AI</h1>
+          <h1 className="text-3xl font-bold">BioSense AI</h1>
           <p className="mt-2 text-blue-100">Clinical Intelligence Platform</p>
         </div>
 

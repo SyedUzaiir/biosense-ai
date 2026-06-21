@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "HealthGuard AI",
+  title: "BioSense AI",
   description: "AI-Powered Health Monitoring Dashboard",
 };
 
