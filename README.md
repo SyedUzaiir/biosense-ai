@@ -2,9 +2,49 @@
 
 ![License](https://img.shields.io/badge/License-MIT-blue.svg) ![Next.js](https://img.shields.io/badge/Next.js-16.x-black?logo=next.js) ![FastAPI](https://img.shields.io/badge/FastAPI-0.100.x-009688?logo=fastapi) ![Python](https://img.shields.io/badge/Python-3.9+-3776AB?logo=python) ![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue?logo=typescript)
 
-Welcome to **BioSense AI**, a state-of-the-art multimodal clinical intelligence platform. The HealthGuard system bridges the gap between physiological diagnostics and psychological indicators, providing a comprehensive AI-driven health assessment for both patients and clinicians.
+> **AI-powered multimodal healthcare platform combining physiological biomarkers, explainable machine learning, and emotion-aware clinical assessment.**
 
-The architecture connects a responsive **Next.js Web Frontend** to a high-performance **FastAPI Backend Server** that drives our machine learning inference and affective vision algorithms, complete with interactive 24h risk trajectory charts and detailed explainability metrics.
+---
+
+## 🌐 Live Demo
+
+- 🚀 **Frontend:** https://your-vercel-url.vercel.app
+- ⚙️ **Backend API:** https://your-railway-url.up.railway.app
+- 📖 **API Documentation:** https://your-railway-url.up.railway.app/docs
+
+---
+
+## 📸 Project Preview
+
+<p align="center">
+  <img src="docs/screenshots/landing_page.png" alt="Landing Page" width="800" />
+  <br />
+  <em>1. BioSense AI Landing Page</em>
+</p>
+
+<p align="center">
+  <img src="docs/screenshots/clinician_dashboard.png" alt="Clinician Dashboard" width="800" />
+  <br />
+  <em>2. Clinician Dashboard</em>
+</p>
+
+<p align="center">
+  <img src="docs/screenshots/patient_dashboard.png" alt="Patient Dashboard" width="800" />
+  <br />
+  <em>3. Patient Portal & Webcam Emotion Tracking</em>
+</p>
+
+<p align="center">
+  <img src="docs/screenshots/risk_analysis.png" alt="Risk Analysis" width="800" />
+  <br />
+  <em>4. Explainability & SHAP Risk Analysis</em>
+</p>
+
+<p align="center">
+  <img src="docs/screenshots/team_section.png" alt="Team Section" width="800" />
+  <br />
+  <em>5. Creators & Team Section</em>
+</p>
 
 ---
 
@@ -53,33 +93,49 @@ graph TD
 
 ## 🌟 Key Features
 
-### 👨‍⚕️ Clinician Diagnostics Check
-- **Risk Stratification**: Patients are dynamically classified into `Stable 🟢`, `At Risk 🟡`, and `High Risk 🔴` categories.
-- **Biomarker Comparison**: Displays bar charts comparing patients' values directly to clinical standard limits.
-- **Simulated 24h Risk Trajectory**: Uses monotonic spline interpolation (`PchipInterpolator`) to plot projected 24-hour blood glucose behavior on an interactive line chart.
+### 👨‍⚕️ Clinician Dashboard
+- **Risk Stratification**: Real-time patient classification into Stable 🟢, At Risk 🟡, and High Risk 🔴 status.
+- **Biomarker Analytics**: Instant patient vital comparison with clinical benchmark limits.
+- **24h Risk Trajectories**: Monotonic spline-interpolated line charts forecasting projected blood glucose paths.
 
-### 📱 Patient Self-Assessment Portal
-- **Multimodal Evaluation**: Analyzes physiological metrics and facial expressions captured live via the patient's webcam.
-- **Clinical Fusion Engine**: Cross-references the physical diabetes risk outcome with the psychological state to output a unified medical recommendation.
-- **Affective Assessment**: Replaces raw emotion labels with standardized clinical terminology (e.g., `Elevated Stress Response` instead of "Angry", or `Mild Depressive Indicators` instead of "Sad").
+### 📱 Patient Portal
+- **Multimodal Capture**: Physical metric inputs coupled with webcam facial analysis.
+- **Clinical Fusion Engine**: Cross-references physical diabetes indicators with psychological state evaluations.
+- **Standardized Affect**: Converts raw facial labels into clinical affect terminology (e.g. `Elevated Stress Response`).
 
-### 🧬 Machine Learning & XAI Pipeline
-- **Imputation**: Automates missing value treatment with `KNNImputer` (n_neighbors=5).
-- **Dual Ensemble Inference**: Integrates a `RandomForestClassifier` (acting as the Bagged Ensemble) and a normalized `SVC` pipeline.
-- **Explainable AI (XAI)**: Generates Global Feature Importance scales, Partial Dependence Plots (PDP) for major biomarkers, and Local Instance SHAP Waterfall plots.
+### 🧬 ML & Explainability (XAI) Pipeline
+- **Imputation**: Automated missing data treatment using a robust KNNImputer model.
+- **Dual Ensemble**: Combines Random Forest Classification with a calibrated Support Vector Classifier pipeline.
+- **Deep Explanations**: Generates local instance SHAP Waterfall plots and Global Feature Importance trends.
 
 ---
 
-## 🛠️ Technology Stack
+## 🛠️ Tech Stack
 
-| Layer | Technology | Description |
-| :--- | :--- | :--- |
-| **Frontend UI** | Next.js (App Router), React, TypeScript | Core web portal architecture |
-| **Styling** | Vanilla Tailwind CSS, Framer Motion | Smooth micro-animations and layouts |
-| **Charts** | Recharts | Dynamic trajectory line graphs and metrics |
-| **Backend API** | FastAPI, Uvicorn | High-throughput async routing |
-| **Vision Model** | FER (Face Emotion Recognition), OpenCV | Facial affect extraction |
-| **Data Science / ML**| Scikit-Learn, Pandas, SciPy, SHAP | Preprocessing, classification, and XAI |
+### Frontend
+* **Next.js** (App Router)
+* **React**
+* **TypeScript**
+* **Tailwind CSS**
+* **Framer Motion**
+* **Recharts**
+
+### Backend
+* **FastAPI**
+* **Python**
+* **Uvicorn**
+
+### Machine Learning
+* **Scikit-Learn**
+* **SHAP**
+* **Pandas**
+* **OpenCV**
+* **FER** (Face Emotion Recognition)
+
+### Deployment
+* **Railway**
+* **Vercel**
+* **GitHub**
 
 ---
 
@@ -139,6 +195,34 @@ The unified Clinical Fusion Engine. Accepts vitals JSON variables and an optiona
 
 ---
 
+## ☁️ Deployment
+
+### Frontend
+- Hosted on **Vercel**
+
+### Backend
+- Hosted on **Railway**
+
+### Machine Learning Models
+- Loaded dynamically during FastAPI server startup.
+
+### Environment Variables
+
+#### Frontend
+```env
+NEXT_PUBLIC_API_URL
+```
+
+#### Backend
+```env
+ALLOWED_ORIGINS
+```
+
+### Health Endpoint
+- Monitor status via `GET /api/v1/health`
+
+---
+
 ## 🚀 Local Setup
 
 ### Prerequisites
@@ -173,6 +257,28 @@ npm run dev
 ```
 
 Open `http://localhost:3000` inside your browser.
+
+---
+
+## 🚀 Roadmap
+
+- [ ] Authentication
+- [ ] Patient History
+- [ ] Electronic Health Record Integration
+- [ ] Explainable AI Dashboard
+- [ ] Docker Support
+- [ ] CI/CD Pipeline
+- [ ] Model Monitoring
+
+---
+
+## 👥 Contributors
+
+| Name | Role |
+|------|------|
+| Syed Uzair Mohiuddin | Full Stack & AI Engineer |
+| Sarasam Chinmaee Reddy | AI Architect |
+| Manohar Yadav Boddu | Machine Learning Engineer |
 
 ---
 
