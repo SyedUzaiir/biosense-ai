@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { Activity, Brain, Shield, Github, Linkedin, Star, Check } from 'lucide-react';
+import { Activity, Brain, Shield, Github, Linkedin, Check, Sparkles, Cpu, Star } from 'lucide-react';
 
 const TEAM_MEMBERS = [
   {
@@ -11,6 +11,7 @@ const TEAM_MEMBERS = [
     desc: 'Built the frontend architecture, FastAPI backend integration, deployment pipeline, and multimodal AI inference workflow.',
     initials: 'SU',
     gradient: 'from-blue-500 to-indigo-600',
+    tags: ['Frontend', 'Backend', 'Deployment', 'UI/UX'],
     github: 'https://github.com/SyedUzaiir',
     linkedin: '#'
   },
@@ -20,6 +21,7 @@ const TEAM_MEMBERS = [
     desc: 'Designed the clinical AI workflow, multimodal system architecture, ML integration strategy, and project planning.',
     initials: 'SC',
     gradient: 'from-purple-500 to-indigo-600',
+    tags: ['Architecture', 'Clinical AI', 'Multimodal', 'Planning'],
     github: '#',
     linkedin: '#'
   },
@@ -29,6 +31,7 @@ const TEAM_MEMBERS = [
     desc: 'Developed the diabetes prediction models, feature engineering pipeline, explainability workflow, and model evaluation.',
     initials: 'MY',
     gradient: 'from-emerald-500 to-teal-600',
+    tags: ['ML Modeling', 'Preprocessing', 'Explainability', 'Evaluation'],
     github: '#',
     linkedin: '#'
   }
@@ -37,11 +40,25 @@ const TEAM_MEMBERS = [
 export default function LandingPage() {
   return (
     <div 
-      className="min-h-screen selection:bg-blue-200 transition-all duration-300"
+      className="min-h-screen selection:bg-blue-200 transition-all duration-300 relative overflow-hidden bg-[#f8fafc]"
       style={{ 
         background: 'radial-gradient(circle at top, #eef5ff 0%, #f7f9fc 45%, #ffffff 100%)' 
       }}
     >
+      {/* Faint Grid Background */}
+      <div 
+        className="absolute inset-0 pointer-events-none -z-20 opacity-[0.35]"
+        style={{
+          backgroundImage: 'radial-gradient(#cbd5e1 1px, transparent 1px)',
+          backgroundSize: '24px 24px',
+        }}
+      />
+
+      {/* Subtle Background Glow Circles */}
+      <div className="absolute top-[-100px] left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-blue-400/10 rounded-full blur-[130px] pointer-events-none -z-10" />
+      <div className="absolute top-[20%] left-[10%] w-[350px] h-[350px] bg-indigo-300/10 rounded-full blur-[100px] pointer-events-none -z-10" />
+      <div className="absolute top-[40%] right-[5%] w-[400px] h-[400px] bg-blue-300/10 rounded-full blur-[120px] pointer-events-none -z-10" />
+
       {/* Navbar */}
       <nav className="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -52,19 +69,19 @@ export default function LandingPage() {
               </div>
               <span className="font-bold text-xl text-slate-900">BioSense AI</span>
             </div>
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3">
               <a 
                 href="https://github.com/SyedUzaiir/biosense-ai" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 border border-slate-200 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900 transition-all shadow-sm hover:border-slate-300"
+                className="inline-flex items-center justify-center gap-1.5 px-4 py-2 border border-slate-200 hover:border-slate-300 rounded-xl text-sm font-bold text-slate-600 hover:bg-slate-50 hover:text-slate-900 transition-colors shadow-sm h-9 box-border"
               >
-                <Star className="h-4 w-4 text-amber-500 fill-amber-500" />
+                <Github className="h-4 w-4" />
                 <span>GitHub</span>
               </a>
               <Link 
                 href="/login" 
-                className="inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-xl shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors"
+                className="inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-xl shadow-sm text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 transition-colors h-9 box-border"
               >
                 Login Platform
               </Link>
@@ -88,30 +105,241 @@ export default function LandingPage() {
             <p className="mt-6 max-w-3xl mx-auto text-lg sm:text-xl text-slate-600 leading-relaxed">
               Multi-modal health risk assessment combining metabolic biomarkers, explainable machine learning, and real-time emotion analysis.
             </p>
-            <div className="mt-10 flex justify-center gap-4">
+            
+            {/* Dual CTAs */}
+            <div className="mt-10 flex flex-wrap justify-center gap-4">
               <Link 
                 href="/login" 
-                className="group relative inline-flex items-center justify-center px-10 py-5 text-lg font-bold text-white bg-blue-600 rounded-full overflow-hidden transition-all hover:scale-105 hover:shadow-xl hover:shadow-blue-500/30"
+                className="group relative inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white bg-blue-600 rounded-2xl overflow-hidden transition-all hover:scale-[1.03] hover:shadow-lg hover:shadow-blue-500/20 active:scale-[0.98]"
               >
                 <span className="absolute inset-0 w-full h-full bg-gradient-to-br from-blue-600 to-indigo-600"></span>
                 <span className="relative flex items-center gap-2">
                   Launch Platform →
                 </span>
               </Link>
+              <a 
+                href="https://github.com/SyedUzaiir/biosense-ai" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 border border-slate-200 rounded-2xl text-base font-bold text-slate-600 hover:text-slate-900 bg-white hover:bg-slate-50 transition-all hover:scale-[1.03] hover:border-slate-300 shadow-sm active:scale-[0.98]"
+              >
+                <Github className="h-5 w-5" />
+                <span>View GitHub</span>
+              </a>
             </div>
-            
-            {/* Powered By Technologies */}
-            <div className="mt-16 flex flex-col items-center gap-3">
+
+            {/* Trust Badges */}
+            <div className="mt-8 flex flex-wrap justify-center gap-6 text-slate-500 text-xs font-bold uppercase tracking-wider">
+              {[
+                'Explainable AI',
+                'Real-time Prediction',
+                'FastAPI Backend',
+                'Multi-modal Analysis'
+              ].map((badge, idx) => (
+                <div key={idx} className="flex items-center gap-1.5">
+                  <Check className="h-4 w-4 text-emerald-500 stroke-[3]" />
+                  <span>{badge}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Floating Dashboard Preview */}
+            <div className="relative w-full max-w-4xl mx-auto mt-16 px-4">
+              {/* Glow behind the mockup */}
+              <div className="absolute inset-0 bg-blue-500/10 rounded-3xl blur-3xl pointer-events-none -z-10" />
+              
+              {/* Mockup Frame */}
+              <div className="bg-slate-900 rounded-3xl p-3 shadow-2xl border border-slate-800/80 backdrop-blur-xl">
+                {/* Mock Browser Header */}
+                <div className="flex items-center justify-between pb-3 px-4 border-b border-slate-800">
+                  <div className="flex gap-2">
+                    <span className="w-2.5 h-2.5 rounded-full bg-rose-500 block" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-amber-500 block" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 block" />
+                  </div>
+                  <div className="bg-slate-800/60 rounded-lg text-[9px] text-slate-400 px-12 py-1 select-none font-medium border border-slate-700/30 font-mono">
+                    app.biosenseai.com/dashboard
+                  </div>
+                  <div className="w-10" />
+                </div>
+
+                {/* Mock App Content */}
+                <div className="bg-slate-950 rounded-2xl overflow-hidden mt-3 grid grid-cols-[180px_1fr] h-[400px] border border-slate-800">
+                  {/* Mock Sidebar */}
+                  <div className="border-r border-slate-800/80 p-4 space-y-6 bg-slate-950/80">
+                    <div className="flex items-center gap-2 px-2 text-blue-500 font-bold text-xs">
+                      <Activity className="h-4 w-4" />
+                      <span>BioSense AI</span>
+                    </div>
+                    <div className="space-y-1">
+                      {[
+                        { label: 'Overview', active: true, icon: Sparkles },
+                        { label: 'Patient Analysis', active: false, icon: Activity },
+                        { label: 'Diagnostic Tool', active: false, icon: Brain },
+                      ].map((item, idx) => (
+                        <div key={idx} className={`flex items-center gap-2 px-3 py-2 rounded-xl text-[10px] font-bold select-none cursor-pointer transition-colors ${item.active ? 'bg-blue-600/10 text-blue-400 border border-blue-500/20' : 'text-slate-400 hover:bg-slate-800/40 hover:text-slate-200 border border-transparent'}`}>
+                          <item.icon className="h-3.5 w-3.5" />
+                          <span>{item.label}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Mock Main Panel */}
+                  <div className="p-5 overflow-y-auto space-y-5 text-left font-sans">
+                    {/* Mock Dashboard Header */}
+                    <div className="flex justify-between items-center pb-3 border-b border-slate-800/60">
+                      <div>
+                        <h3 className="text-xs font-bold text-slate-100">Patient Diagnostic Profile</h3>
+                        <p className="text-[9px] text-slate-500 mt-0.5">Multimodal clinical assessment & risk forecasting</p>
+                      </div>
+                      <div className="px-2.5 py-0.5 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 rounded-full text-[9px] font-bold animate-pulse flex items-center gap-1">
+                        <span className="w-1 h-1 rounded-full bg-emerald-400 animate-ping" />
+                        Live Sync
+                      </div>
+                    </div>
+
+                    {/* Mock Grid Widgets */}
+                    <div className="grid grid-cols-3 gap-3">
+                      <div className="bg-slate-900/60 border border-slate-850 p-3.5 rounded-xl flex flex-col justify-between h-24">
+                        <div className="flex justify-between items-start">
+                          <span className="text-[8px] font-bold uppercase tracking-wider text-slate-400">Diabetes Risk</span>
+                          <span className="px-1.5 py-0.5 rounded text-[7px] font-bold bg-rose-500/10 border border-rose-500/20 text-rose-400">High Risk</span>
+                        </div>
+                        <div>
+                          <span className="text-xl font-extrabold text-slate-100">92.4%</span>
+                          <p className="text-[8px] text-slate-500 mt-0.5">HbA1c & Glucose Analysis</p>
+                        </div>
+                      </div>
+
+                      <div className="bg-slate-900/60 border border-slate-850 p-3.5 rounded-xl flex flex-col justify-between h-24">
+                        <div className="flex justify-between items-start">
+                          <span className="text-[8px] font-bold uppercase tracking-wider text-slate-400">Emotion State</span>
+                          <span className="px-1.5 py-0.5 rounded text-[7px] font-bold bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">Stable</span>
+                        </div>
+                        <div>
+                          <span className="text-xl font-extrabold text-slate-100">Calm / Focus</span>
+                          <p className="text-[8px] text-slate-500 mt-0.5">Facial Marker Tracking</p>
+                        </div>
+                      </div>
+
+                      <div className="bg-slate-900/60 border border-slate-850 p-3.5 rounded-xl flex flex-col justify-between h-24">
+                        <div className="flex justify-between items-start">
+                          <span className="text-[8px] font-bold uppercase tracking-wider text-slate-400">Fusion Confidence</span>
+                          <span className="px-1.5 py-0.5 rounded text-[7px] font-bold bg-blue-500/10 border border-blue-500/20 text-blue-400">Optimal</span>
+                        </div>
+                        <div>
+                          <span className="text-xl font-extrabold text-slate-100">95.0%</span>
+                          <p className="text-[8px] text-slate-500 mt-0.5">Cross-referencing metrics</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Mock Chart & Explanations */}
+                    <div className="grid grid-cols-[2fr_1fr] gap-3">
+                      <div className="bg-slate-900/60 border border-slate-850 p-3.5 rounded-xl h-36 flex flex-col justify-between">
+                        <span className="text-[8px] font-bold uppercase tracking-wider text-slate-400">Glucose Fluctuations (24h)</span>
+                        <div className="flex-1 flex items-end gap-1.5 h-20 pt-2">
+                          {[45, 60, 52, 85, 90, 75, 68, 92, 110, 80, 70, 85].map((val, idx) => (
+                            <div key={idx} className="flex-1 flex flex-col items-center gap-1 group">
+                              <div 
+                                className={`w-full rounded-t-sm transition-all duration-300 ${val > 90 ? 'bg-rose-500/80' : 'bg-blue-500/80'}`} 
+                                style={{ height: `${(val / 120) * 100}%` }}
+                              />
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="bg-slate-900/60 border border-slate-850 p-3.5 rounded-xl h-36 flex flex-col justify-between">
+                        <span className="text-[8px] font-bold uppercase tracking-wider text-slate-400">Explainable AI (SHAP)</span>
+                        <div className="space-y-1.5 mt-1">
+                          <div className="space-y-0.5">
+                            <div className="flex justify-between text-[7px] text-slate-400 font-medium">
+                              <span>HbA1c levels (+12%)</span>
+                              <span className="text-rose-400">+12%</span>
+                            </div>
+                            <div className="w-full bg-slate-800 rounded-full h-0.5">
+                              <div className="bg-rose-500 h-0.5 rounded-full" style={{ width: '70%' }} />
+                            </div>
+                          </div>
+                          <div className="space-y-0.5">
+                            <div className="flex justify-between text-[7px] text-slate-400 font-medium">
+                              <span>BMI (+8%)</span>
+                              <span className="text-rose-400">+8%</span>
+                            </div>
+                            <div className="w-full bg-slate-800 rounded-full h-0.5">
+                              <div className="bg-rose-400 h-0.5 rounded-full" style={{ width: '45%' }} />
+                            </div>
+                          </div>
+                          <div className="space-y-0.5">
+                            <div className="flex justify-between text-[7px] text-slate-400 font-medium">
+                              <span>Systolic BP (-3%)</span>
+                              <span className="text-emerald-400">-3%</span>
+                            </div>
+                            <div className="w-full bg-slate-800 rounded-full h-0.5">
+                              <div className="bg-emerald-500 h-0.5 rounded-full" style={{ width: '20%' }} />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Richer Technology Pills */}
+            <div className="mt-20 flex flex-col items-center gap-4">
               <span className="text-xs font-bold tracking-wider text-slate-400 uppercase">Powered By</span>
-              <div className="flex flex-wrap justify-center gap-2 max-w-2xl">
-                {['Next.js', 'FastAPI', 'Python', 'Scikit-Learn', 'OpenCV', 'TensorFlow', 'MongoDB'].map((tech) => (
-                  <span key={tech} className="px-3 py-1 bg-white hover:bg-slate-50 border border-slate-200 hover:border-blue-500 rounded-full text-xs font-semibold text-slate-600 transition-colors shadow-sm cursor-default">
-                    {tech}
+              <div className="flex flex-wrap justify-center gap-4 max-w-4xl px-4">
+                {[
+                  { name: 'Next.js', emoji: '⚡' },
+                  { name: 'FastAPI', emoji: '⚙' },
+                  { name: 'Python', emoji: '🐍' },
+                  { name: 'TensorFlow', emoji: '🧠' },
+                  { name: 'Scikit-Learn', emoji: '📊' },
+                  { name: 'OpenCV', emoji: '👁' },
+                  { name: 'MongoDB', emoji: '🍃' }
+                ].map((tech) => (
+                  <span 
+                    key={tech.name} 
+                    className="px-5 py-2.5 bg-white hover:bg-slate-50 border border-slate-200 hover:border-blue-500 rounded-2xl text-sm font-bold text-slate-700 transition-all shadow-sm hover:shadow-md cursor-default flex items-center gap-2.5"
+                  >
+                    <span className="text-base select-none">{tech.emoji}</span>
+                    <span>{tech.name}</span>
                   </span>
                 ))}
               </div>
             </div>
           </motion.div>
+        </div>
+      </div>
+
+      {/* Project Stats Section */}
+      <div className="bg-slate-900 border-y border-slate-800 py-16 relative overflow-hidden">
+        {/* Subtle glow */}
+        <div className="absolute inset-0 bg-blue-600/5 blur-3xl pointer-events-none" />
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-slate-800">
+            <div className="py-4 md:py-0">
+              <p className="text-4xl md:text-5xl font-extrabold text-blue-400">95%</p>
+              <p className="mt-2 text-xs font-bold text-slate-400 uppercase tracking-wider">Prediction Accuracy</p>
+            </div>
+            <div className="py-4 md:py-0">
+              <p className="text-4xl md:text-5xl font-extrabold text-blue-400">7</p>
+              <p className="mt-2 text-xs font-bold text-slate-400 uppercase tracking-wider">Clinical Features</p>
+            </div>
+            <div className="py-4 md:py-0">
+              <p className="text-4xl md:text-5xl font-extrabold text-blue-400">3</p>
+              <p className="mt-2 text-xs font-bold text-slate-400 uppercase tracking-wider">AI Models</p>
+            </div>
+            <div className="py-4 md:py-0">
+              <p className="text-4xl md:text-5xl font-extrabold text-blue-400">&lt;500 ms</p>
+              <p className="mt-2 text-xs font-bold text-slate-400 uppercase tracking-wider">Inference Time</p>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -183,17 +411,32 @@ export default function LandingPage() {
               <motion.div 
                 key={i}
                 whileHover={{ y: -8 }}
-                className="bg-white p-8 rounded-3xl shadow-lg border border-slate-200 hover:border-blue-500 transition-all duration-300 text-center flex flex-col items-center justify-between"
+                className="bg-white p-8 rounded-3xl shadow-lg border border-slate-200 hover:border-blue-500 transition-all duration-300 text-left flex flex-col justify-between"
               >
-                <div className="flex flex-col items-center">
-                  <div className={`h-24 w-24 bg-gradient-to-br ${member.gradient} rounded-full flex items-center justify-center text-white text-2xl font-bold shadow-md mb-6`}>
-                    {member.initials}
+                <div>
+                  {/* Header Row */}
+                  <div className="flex items-center gap-3.5 mb-5">
+                    <div className={`h-12 w-12 bg-gradient-to-br ${member.gradient} rounded-full flex items-center justify-center text-white text-sm font-extrabold shadow-sm`}>
+                      {member.initials}
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-bold text-slate-900">{member.name}</h3>
+                      <p className="text-xs font-semibold text-blue-600">{member.role}</p>
+                    </div>
                   </div>
-                  <h3 className="text-xl font-bold text-slate-900">{member.name}</h3>
-                  <p className="text-sm font-semibold text-blue-600 mt-1">{member.role}</p>
-                  <p className="text-sm text-slate-500 mt-4 leading-relaxed">{member.desc}</p>
+                  <p className="text-sm text-slate-500 leading-relaxed">{member.desc}</p>
+                  
+                  {/* Focus pill tags */}
+                  <div className="flex flex-wrap gap-1.5 mt-5">
+                    {member.tags.map((tag) => (
+                      <span key={tag} className="px-2.5 py-1 bg-slate-50 border border-slate-100 rounded-lg text-[10px] font-bold text-slate-500 tracking-wide uppercase">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-                <div className="flex gap-6 mt-6">
+
+                <div className="flex gap-6 mt-6 pt-5 border-t border-slate-100">
                   <a 
                     href={member.github} 
                     target="_blank" 
@@ -296,14 +539,19 @@ export default function LandingPage() {
       </div>
 
       {/* Footer */}
-      <footer className="bg-slate-900 py-12 text-center text-slate-400 border-t border-slate-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-sm font-medium">
-            Built using Next.js • FastAPI • Python • Railway • Vercel
-          </p>
-          <p className="mt-3 text-xs text-slate-500">
-            © 2026 BioSense AI. All rights reserved.
-          </p>
+      <footer className="bg-slate-950 py-10 text-slate-500 border-t border-slate-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs font-semibold">
+          <div className="flex flex-wrap items-center justify-center gap-1.5">
+            <span>Built with</span>
+            {['Next.js', 'FastAPI', 'Python', 'Scikit-Learn', 'Railway', 'Vercel'].map((item, idx, arr) => (
+              <span key={item} className="text-slate-400">
+                {item}{idx < arr.length - 1 ? ' •' : ''}
+              </span>
+            ))}
+          </div>
+          <div>
+            © 2026 BioSense AI
+          </div>
         </div>
       </footer>
     </div>
