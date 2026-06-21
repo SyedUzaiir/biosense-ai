@@ -272,9 +272,9 @@ Open `http://localhost:3000` inside your browser.
 
 | Name | Role |
 |------|------|
-| Syed Uzair Mohiuddin | Full Stack & AI Engineer |
-| Sarasam Chinmaee Reddy | AI Architect |
-| Manohar Yadav Boddu | Machine Learning Engineer |
+| [Syed Uzair Mohiuddin](https://github.com/SyedUzaiir) | Full Stack & AI Engineer |
+| [Sarasam Chinmaee Reddy](https://github.com/Chinmayee04-sys) | AI Architect |
+| [Manohar Yadav Boddu](https://github.com/Manohar0303) | Machine Learning Engineer |
 
 ---
 

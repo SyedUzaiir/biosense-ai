@@ -13,7 +13,7 @@ const TEAM_MEMBERS = [
     gradient: 'from-blue-500 to-indigo-600',
     tags: ['Frontend', 'Backend', 'Deployment', 'UI/UX'],
     github: 'https://github.com/SyedUzaiir',
-    linkedin: '#'
+    linkedin: 'https://www.linkedin.com/in/syeduzairmohiuddin/'
   },
   {
     name: 'Sarasam Chinmaee Reddy',
@@ -22,8 +22,8 @@ const TEAM_MEMBERS = [
     initials: 'SC',
     gradient: 'from-purple-500 to-indigo-600',
     tags: ['Architecture', 'Clinical AI', 'Multimodal', 'Planning'],
-    github: '#',
-    linkedin: '#'
+    github: 'https://github.com/Chinmayee04-sys',
+    linkedin: 'https://www.linkedin.com/in/s-chinmayee-reddy-1467b030b/'
   },
   {
     name: 'Manohar Yadav Boddu',
@@ -32,8 +32,8 @@ const TEAM_MEMBERS = [
     initials: 'MY',
     gradient: 'from-emerald-500 to-teal-600',
     tags: ['ML Modeling', 'Preprocessing', 'Explainability', 'Evaluation'],
-    github: '#',
-    linkedin: '#'
+    github: 'https://github.com/Manohar0303',
+    linkedin: 'https://www.linkedin.com/in/boddu-manohar-7b717a31a/'
   }
 ];
 
