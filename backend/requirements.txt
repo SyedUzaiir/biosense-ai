@@ -7,5 +7,5 @@ pandas
 scikit-learn
 joblib
 scipy
-opencv-python-headless
+opencv-contrib-python
 fer

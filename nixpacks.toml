@@ -1,6 +1,9 @@
 # nixpacks.toml
 # Lock Python provider version to 3.11 and resolve OpenCV headless bindings.
 
+[variables]
+PYTHON_VERSION = "3.11"
+
 [providers.python]
 version = "3.11"
 
