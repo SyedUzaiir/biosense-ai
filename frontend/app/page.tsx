@@ -51,8 +51,11 @@ export default function LandingPage() {
       {/* ── Navbar ────────────────────────────────── */}
       <nav className="fixed top-0 inset-x-0 z-50 h-14 flex items-center border-b border-slate-200/80 bg-white/75 backdrop-blur-lg">
         <div className="max-w-6xl mx-auto w-full px-5 flex items-center justify-between">
-          <Link href="/">
-            <Image src="/logo.png" alt="BioSense AI" width={160} height={40} className="h-9 w-auto object-contain" priority />
+          <Link href="/" className="flex items-center gap-2.5 group">
+            <Image src="/logo.png" alt="BioSense AI" width={32} height={32} className="h-8 w-8 rounded-lg object-cover" priority />
+            <span className="font-bold text-xl tracking-tight text-slate-900 group-hover:text-blue-600 transition-colors">
+              BioSense <span className="text-blue-600">AI</span>
+            </span>
           </Link>
           <div className="flex items-center gap-2">
             <a

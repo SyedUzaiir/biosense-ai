@@ -1,6 +1,7 @@
 "use client";
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { Home, Activity, FileText, Settings, HeartPulse } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -19,9 +20,9 @@ export function Sidebar() {
     return (
         <aside className="hidden h-screen w-64 flex-col border-r border-slate-200 bg-white shadow-sm md:flex fixed left-0 top-0 z-30">
             <div className="flex h-16 items-center justify-center border-b border-slate-100 px-6">
-                <div className="flex items-center gap-2 font-bold text-xl text-blue-600">
-                    <HeartPulse className="h-8 w-8 text-blue-500" />
-                    <span>BioSense AI</span>
+                <div className="flex items-center gap-2.5 font-bold text-xl text-slate-900">
+                    <Image src="/logo.png" alt="BioSense AI" width={28} height={28} className="h-7 w-7 rounded-md object-cover" />
+                    <span>BioSense <span className="text-blue-600">AI</span></span>
                 </div>
             </div>
 

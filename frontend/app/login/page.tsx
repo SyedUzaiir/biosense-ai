@@ -77,8 +77,11 @@ export default function LoginPage() {
         className="w-full max-w-md overflow-hidden rounded-2xl bg-white shadow-xl"
       >
         <div className="bg-white border-b border-slate-100 px-8 pt-8 pb-6 text-center">
-          <div className="flex justify-center mb-2">
-            <Image src="/logo.png" alt="BioSense AI" width={180} height={48} className="h-12 w-auto object-contain" priority />
+          <div className="flex flex-col items-center justify-center gap-3 mb-2">
+            <Image src="/logo.png" alt="BioSense AI" width={48} height={48} className="h-12 w-12 rounded-xl object-cover shadow-sm" priority />
+            <span className="font-bold text-2xl tracking-tight text-slate-900">
+              BioSense <span className="text-blue-600">AI</span>
+            </span>
           </div>
           <p className="text-sm text-slate-400">Clinical Intelligence Platform</p>
         </div>
