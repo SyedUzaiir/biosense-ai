@@ -2,500 +2,415 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { Activity, Brain, Shield, Github, Linkedin, Check, Sparkles, Cpu, Star } from 'lucide-react';
+import { Activity, Brain, Shield, Github, Linkedin, ArrowRight, FlaskConical, Microscope, ScanFace } from 'lucide-react';
 
 const TEAM_MEMBERS = [
   {
     name: 'Syed Uzair Mohiuddin',
     role: 'Full Stack & AI Engineer',
-    desc: 'Built the frontend architecture, FastAPI backend integration, deployment pipeline, and multimodal AI inference workflow.',
+    desc: 'Frontend, FastAPI backend, deployment pipeline, and multimodal inference integration.',
     initials: 'SU',
-    gradient: 'from-blue-500 to-indigo-600',
-    tags: ['Frontend', 'Backend', 'Deployment', 'UI/UX'],
+    color: 'bg-blue-600',
     github: 'https://github.com/SyedUzaiir',
     linkedin: 'https://www.linkedin.com/in/syeduzairmohiuddin/'
   },
   {
     name: 'Sarasam Chinmaee Reddy',
     role: 'AI Architect',
-    desc: 'Designed the clinical AI workflow, multimodal system architecture, ML integration strategy, and project planning.',
+    desc: 'System architecture, clinical AI workflow design, and ML pipeline strategy.',
     initials: 'SC',
-    gradient: 'from-purple-500 to-indigo-600',
-    tags: ['Architecture', 'Clinical AI', 'Multimodal', 'Planning'],
+    color: 'bg-violet-600',
     github: 'https://github.com/Chinmayee04-sys',
     linkedin: 'https://www.linkedin.com/in/s-chinmayee-reddy-1467b030b/'
   },
   {
     name: 'Manohar Yadav Boddu',
     role: 'Machine Learning Engineer',
-    desc: 'Developed the diabetes prediction models, feature engineering pipeline, explainability workflow, and model evaluation.',
+    desc: 'Model training, feature engineering, SHAP explainability, and evaluation.',
     initials: 'MY',
-    gradient: 'from-emerald-500 to-teal-600',
-    tags: ['ML Modeling', 'Preprocessing', 'Explainability', 'Evaluation'],
+    color: 'bg-emerald-600',
     github: 'https://github.com/Manohar0303',
     linkedin: 'https://www.linkedin.com/in/boddu-manohar-7b717a31a/'
   }
 ];
 
+const TECH = [
+  { name: 'Next.js', fill: '#000000' },
+  { name: 'FastAPI', fill: '#009688' },
+  { name: 'Python', fill: '#3776AB' },
+  { name: 'Scikit-Learn', fill: '#F7931E' },
+  { name: 'OpenCV', fill: '#5C3EE8' },
+  { name: 'MongoDB', fill: '#47A248' },
+];
+
 export default function LandingPage() {
   return (
-    <div 
-      className="min-h-screen selection:bg-blue-200 transition-all duration-300 relative overflow-hidden bg-[#f8fafc]"
-      style={{ 
-        background: 'radial-gradient(circle at top, #eef5ff 0%, #f7f9fc 45%, #ffffff 100%)' 
-      }}
-    >
-      {/* Faint Grid Background */}
-      <div 
-        className="absolute inset-0 pointer-events-none -z-20 opacity-[0.35]"
-        style={{
-          backgroundImage: 'radial-gradient(#cbd5e1 1px, transparent 1px)',
-          backgroundSize: '24px 24px',
-        }}
-      />
+    <div className="min-h-screen bg-[#fafafa] text-slate-900 font-sans antialiased overflow-x-hidden">
 
-      {/* Subtle Background Glow Circles */}
-      <div className="absolute top-[-100px] left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-blue-400/10 rounded-full blur-[130px] pointer-events-none -z-10" />
-      <div className="absolute top-[20%] left-[10%] w-[350px] h-[350px] bg-indigo-300/10 rounded-full blur-[100px] pointer-events-none -z-10" />
-      <div className="absolute top-[40%] right-[5%] w-[400px] h-[400px] bg-blue-300/10 rounded-full blur-[120px] pointer-events-none -z-10" />
-
-      {/* Navbar */}
-      <nav className="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center gap-2">
-              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-600 animate-pulse">
-                <Activity className="h-5 w-5 text-white" />
-              </div>
-              <span className="font-bold text-xl text-slate-900">BioSense AI</span>
-            </div>
-            <div className="flex items-center gap-3">
-              <a 
-                href="https://github.com/SyedUzaiir/biosense-ai" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="inline-flex items-center justify-center gap-1.5 px-4 py-2 border border-slate-200 hover:border-slate-300 rounded-xl text-sm font-bold text-slate-600 hover:bg-slate-50 hover:text-slate-900 transition-colors shadow-sm h-9 box-border"
-              >
-                <Github className="h-4 w-4" />
-                <span>GitHub</span>
-              </a>
-              <Link 
-                href="/login" 
-                className="inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-xl shadow-sm text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 transition-colors h-9 box-border"
-              >
-                Login Platform
-              </Link>
-            </div>
+      {/* ── Navbar ────────────────────────────────── */}
+      <nav className="fixed top-0 inset-x-0 z-50 h-14 flex items-center border-b border-slate-200/80 bg-white/75 backdrop-blur-lg">
+        <div className="max-w-6xl mx-auto w-full px-5 flex items-center justify-between">
+          <div className="flex items-center gap-2.5">
+            <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-blue-600">
+              <Activity className="h-4 w-4 text-white" />
+            </span>
+            <span className="font-semibold text-[15px] tracking-tight text-slate-900">BioSense AI</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <a
+              href="https://github.com/SyedUzaiir/biosense-ai"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 px-3 py-1.5 text-sm text-slate-600 hover:text-slate-900 rounded-lg hover:bg-slate-100 transition-colors"
+            >
+              <Github className="h-4 w-4" />
+              <span className="hidden sm:inline">GitHub</span>
+            </a>
+            <Link
+              href="/login"
+              className="flex items-center gap-1 px-4 py-1.5 text-sm font-medium text-white bg-slate-900 hover:bg-slate-700 rounded-lg transition-colors"
+            >
+              Sign in
+              <ArrowRight className="h-3.5 w-3.5 ml-0.5" />
+            </Link>
           </div>
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <div className="relative pt-32 pb-20 sm:pt-40 sm:pb-24 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+      {/* ── Hero ──────────────────────────────────── */}
+      <section className="pt-36 pb-20 px-5">
+        <div className="max-w-6xl mx-auto">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.55, ease: 'easeOut' }}
           >
-            <h1 className="text-4xl tracking-tight font-extrabold text-slate-900 sm:text-5xl md:text-6xl lg:text-7xl space-y-3">
-              <span className="block">AI-Powered</span>
-              <span className="block text-blue-600">Clinical Intelligence</span>
+            {/* Label */}
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 text-blue-700 text-xs font-medium mb-7">
+              <span className="h-1.5 w-1.5 rounded-full bg-blue-500 animate-pulse" />
+              Final Year Mini Project — Vardhaman College of Engineering
+            </div>
+
+            {/* Headline */}
+            <h1 className="text-[2.75rem] sm:text-6xl lg:text-7xl font-bold tracking-[-0.03em] leading-[1.08] text-slate-900 max-w-4xl">
+              Clinical risk assessment,{' '}
+              <span className="text-blue-600">powered by machine learning.</span>
             </h1>
-            <p className="mt-6 max-w-3xl mx-auto text-lg sm:text-xl text-slate-600 leading-relaxed">
-              Multi-modal health risk assessment combining metabolic biomarkers, explainable machine learning, and real-time emotion analysis.
+
+            <p className="mt-6 text-lg text-slate-500 max-w-2xl leading-relaxed">
+              BioSense AI predicts early-stage diabetes risk by combining patient vitals with real-time facial emotion analysis — giving clinicians a richer picture than biomarkers alone.
             </p>
-            
-            {/* Dual CTAs */}
-            <div className="mt-10 flex flex-wrap justify-center gap-4">
-              <Link 
-                href="/login" 
-                className="group relative inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white bg-blue-600 rounded-2xl overflow-hidden transition-all hover:scale-[1.03] hover:shadow-lg hover:shadow-blue-500/20 active:scale-[0.98]"
+
+            {/* CTAs */}
+            <div className="mt-9 flex flex-wrap gap-3">
+              <Link
+                href="/login"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-slate-900 text-white text-sm font-medium rounded-xl hover:bg-slate-700 transition-colors shadow-sm"
               >
-                <span className="absolute inset-0 w-full h-full bg-gradient-to-br from-blue-600 to-indigo-600"></span>
-                <span className="relative flex items-center gap-2">
-                  Launch Platform →
-                </span>
+                Open Platform
+                <ArrowRight className="h-4 w-4" />
               </Link>
-              <a 
-                href="https://github.com/SyedUzaiir/biosense-ai" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 border border-slate-200 rounded-2xl text-base font-bold text-slate-600 hover:text-slate-900 bg-white hover:bg-slate-50 transition-all hover:scale-[1.03] hover:border-slate-300 shadow-sm active:scale-[0.98]"
+              <a
+                href="https://biosense-ai-production.up.railway.app/docs"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-3 border border-slate-200 bg-white text-slate-700 text-sm font-medium rounded-xl hover:bg-slate-50 transition-colors shadow-sm"
               >
-                <Github className="h-5 w-5" />
-                <span>View GitHub</span>
+                API Docs
               </a>
             </div>
 
-            {/* Trust Badges */}
-            <div className="mt-8 flex flex-wrap justify-center gap-6 text-slate-500 text-xs font-bold uppercase tracking-wider">
-              {[
-                'Explainable AI',
-                'Real-time Prediction',
-                'FastAPI Backend',
-                'Multi-modal Analysis'
-              ].map((badge, idx) => (
-                <div key={idx} className="flex items-center gap-1.5">
-                  <Check className="h-4 w-4 text-emerald-500 stroke-[3]" />
-                  <span>{badge}</span>
-                </div>
-              ))}
+            {/* Links row */}
+            <div className="mt-7 flex flex-wrap gap-5 text-sm text-slate-400">
+              <a href="https://biosenseai.vercel.app/" target="_blank" rel="noopener noreferrer" className="hover:text-slate-700 transition-colors underline underline-offset-4 decoration-slate-200 hover:decoration-slate-400">Live frontend ↗</a>
+              <a href="https://biosense-ai-production.up.railway.app" target="_blank" rel="noopener noreferrer" className="hover:text-slate-700 transition-colors underline underline-offset-4 decoration-slate-200 hover:decoration-slate-400">Backend API ↗</a>
+              <a href="https://github.com/SyedUzaiir/biosense-ai" target="_blank" rel="noopener noreferrer" className="hover:text-slate-700 transition-colors underline underline-offset-4 decoration-slate-200 hover:decoration-slate-400">View source ↗</a>
+            </div>
+          </motion.div>
+
+          {/* ── Dashboard Mockup ── */}
+          <motion.div
+            initial={{ opacity: 0, y: 28 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.65, delay: 0.15, ease: 'easeOut' }}
+            className="mt-16 rounded-2xl border border-slate-200 shadow-2xl shadow-slate-200/80 overflow-hidden bg-slate-950"
+          >
+            {/* browser chrome */}
+            <div className="flex items-center gap-2 px-4 h-10 border-b border-slate-800 bg-slate-900">
+              <span className="h-3 w-3 rounded-full bg-rose-500/80" />
+              <span className="h-3 w-3 rounded-full bg-amber-400/80" />
+              <span className="h-3 w-3 rounded-full bg-emerald-500/80" />
+              <div className="ml-4 flex-1 max-w-xs h-5 bg-slate-800 rounded-md flex items-center px-3">
+                <span className="text-[9px] text-slate-500 font-mono truncate">app.biosenseai.com/clinician</span>
+              </div>
             </div>
 
-            {/* Floating Dashboard Preview */}
-            <div className="relative w-full max-w-4xl mx-auto mt-16 px-4">
-              {/* Glow behind the mockup */}
-              <div className="absolute inset-0 bg-blue-500/10 rounded-3xl blur-3xl pointer-events-none -z-10" />
-              
-              {/* Mockup Frame */}
-              <div className="bg-slate-900 rounded-3xl p-3 shadow-2xl border border-slate-800/80 backdrop-blur-xl">
-                {/* Mock Browser Header */}
-                <div className="flex items-center justify-between pb-3 px-4 border-b border-slate-800">
-                  <div className="flex gap-2">
-                    <span className="w-2.5 h-2.5 rounded-full bg-rose-500 block" />
-                    <span className="w-2.5 h-2.5 rounded-full bg-amber-500 block" />
-                    <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 block" />
+            {/* app chrome */}
+            <div className="grid grid-cols-[160px_1fr] h-[420px]">
+              {/* sidebar */}
+              <div className="border-r border-slate-800 px-3 pt-5 space-y-1 bg-slate-950">
+                <div className="flex items-center gap-2 px-2 mb-5">
+                  <span className="h-5 w-5 rounded bg-blue-600 flex items-center justify-center">
+                    <Activity className="h-3 w-3 text-white" />
+                  </span>
+                  <span className="text-[11px] font-semibold text-blue-400">BioSense AI</span>
+                </div>
+                {[
+                  { label: 'Dashboard', active: true },
+                  { label: 'Patients', active: false },
+                  { label: 'Risk Analysis', active: false },
+                  { label: 'Reports', active: false },
+                ].map((item) => (
+                  <div
+                    key={item.label}
+                    className={`px-3 py-2 rounded-lg text-[10px] font-medium cursor-default select-none ${
+                      item.active
+                        ? 'bg-blue-600/15 text-blue-400'
+                        : 'text-slate-500 hover:text-slate-300'
+                    }`}
+                  >
+                    {item.label}
                   </div>
-                  <div className="bg-slate-800/60 rounded-lg text-[9px] text-slate-400 px-12 py-1 select-none font-medium border border-slate-700/30 font-mono">
-                    app.biosenseai.com/dashboard
+                ))}
+              </div>
+
+              {/* main panel */}
+              <div className="p-6 overflow-y-auto space-y-5 bg-slate-950">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h2 className="text-xs font-semibold text-slate-100">Patient Overview</h2>
+                    <p className="text-[9px] text-slate-500 mt-0.5">Today, 22 Jun 2026</p>
                   </div>
-                  <div className="w-10" />
+                  <div className="flex items-center gap-1.5 text-[9px] text-emerald-400 font-medium">
+                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                    Live
+                  </div>
                 </div>
 
-                {/* Mock App Content */}
-                <div className="bg-slate-950 rounded-2xl overflow-hidden mt-3 grid grid-cols-[180px_1fr] h-[400px] border border-slate-800">
-                  {/* Mock Sidebar */}
-                  <div className="border-r border-slate-800/80 p-4 space-y-6 bg-slate-950/80">
-                    <div className="flex items-center gap-2 px-2 text-blue-500 font-bold text-xs">
-                      <Activity className="h-4 w-4" />
-                      <span>BioSense AI</span>
+                {/* stat cards */}
+                <div className="grid grid-cols-3 gap-3">
+                  {[
+                    { label: 'Diabetes Risk', value: '74.2%', tag: 'At Risk', tagColor: 'text-amber-400 bg-amber-500/10 border-amber-500/20' },
+                    { label: 'Emotion State', value: 'Neutral', tag: 'Stable', tagColor: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/20' },
+                    { label: 'Model Confidence', value: '78.4%', tag: 'Calibrated', tagColor: 'text-blue-400 bg-blue-500/10 border-blue-500/20' },
+                  ].map((card) => (
+                    <div key={card.label} className="rounded-xl border border-slate-800 bg-slate-900 p-3.5 flex flex-col gap-3">
+                      <div className="flex items-center justify-between">
+                        <span className="text-[8px] uppercase tracking-wider text-slate-500 font-medium">{card.label}</span>
+                        <span className={`text-[7px] font-semibold px-1.5 py-0.5 rounded border ${card.tagColor}`}>{card.tag}</span>
+                      </div>
+                      <span className="text-xl font-bold text-slate-100">{card.value}</span>
                     </div>
-                    <div className="space-y-1">
-                      {[
-                        { label: 'Overview', active: true, icon: Sparkles },
-                        { label: 'Patient Analysis', active: false, icon: Activity },
-                        { label: 'Diagnostic Tool', active: false, icon: Brain },
-                      ].map((item, idx) => (
-                        <div key={idx} className={`flex items-center gap-2 px-3 py-2 rounded-xl text-[10px] font-bold select-none cursor-pointer transition-colors ${item.active ? 'bg-blue-600/10 text-blue-400 border border-blue-500/20' : 'text-slate-400 hover:bg-slate-800/40 hover:text-slate-200 border border-transparent'}`}>
-                          <item.icon className="h-3.5 w-3.5" />
-                          <span>{item.label}</span>
+                  ))}
+                </div>
+
+                {/* chart row */}
+                <div className="grid grid-cols-[2fr_1fr] gap-3">
+                  <div className="rounded-xl border border-slate-800 bg-slate-900 p-3.5">
+                    <span className="text-[8px] uppercase tracking-wider text-slate-500 font-medium block mb-3">Blood Glucose — 24h Trajectory</span>
+                    <div className="flex items-end gap-1 h-20">
+                      {[38, 52, 48, 72, 80, 68, 60, 85, 96, 74, 66, 78].map((v, i) => (
+                        <div key={i} className="flex-1 flex items-end">
+                          <div
+                            className={`w-full rounded-t transition-all ${v > 80 ? 'bg-rose-500/70' : 'bg-blue-500/60'}`}
+                            style={{ height: `${(v / 100) * 100}%` }}
+                          />
                         </div>
                       ))}
                     </div>
                   </div>
-
-                  {/* Mock Main Panel */}
-                  <div className="p-5 overflow-y-auto space-y-5 text-left font-sans">
-                    {/* Mock Dashboard Header */}
-                    <div className="flex justify-between items-center pb-3 border-b border-slate-800/60">
-                      <div>
-                        <h3 className="text-xs font-bold text-slate-100">Patient Diagnostic Profile</h3>
-                        <p className="text-[9px] text-slate-500 mt-0.5">Multimodal clinical assessment & risk forecasting</p>
-                      </div>
-                      <div className="px-2.5 py-0.5 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 rounded-full text-[9px] font-bold animate-pulse flex items-center gap-1">
-                        <span className="w-1 h-1 rounded-full bg-emerald-400 animate-ping" />
-                        Live Sync
-                      </div>
-                    </div>
-
-                    {/* Mock Grid Widgets */}
-                    <div className="grid grid-cols-3 gap-3">
-                      <div className="bg-slate-900/60 border border-slate-850 p-3.5 rounded-xl flex flex-col justify-between h-24">
-                        <div className="flex justify-between items-start">
-                          <span className="text-[8px] font-bold uppercase tracking-wider text-slate-400">Diabetes Risk</span>
-                          <span className="px-1.5 py-0.5 rounded text-[7px] font-bold bg-rose-500/10 border border-rose-500/20 text-rose-400">High Risk</span>
-                        </div>
-                        <div>
-                          <span className="text-xl font-extrabold text-slate-100">92.4%</span>
-                          <p className="text-[8px] text-slate-500 mt-0.5">HbA1c & Glucose Analysis</p>
-                        </div>
-                      </div>
-
-                      <div className="bg-slate-900/60 border border-slate-850 p-3.5 rounded-xl flex flex-col justify-between h-24">
-                        <div className="flex justify-between items-start">
-                          <span className="text-[8px] font-bold uppercase tracking-wider text-slate-400">Emotion State</span>
-                          <span className="px-1.5 py-0.5 rounded text-[7px] font-bold bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">Stable</span>
-                        </div>
-                        <div>
-                          <span className="text-xl font-extrabold text-slate-100">Calm / Focus</span>
-                          <p className="text-[8px] text-slate-500 mt-0.5">Facial Marker Tracking</p>
-                        </div>
-                      </div>
-
-                      <div className="bg-slate-900/60 border border-slate-850 p-3.5 rounded-xl flex flex-col justify-between h-24">
-                        <div className="flex justify-between items-start">
-                          <span className="text-[8px] font-bold uppercase tracking-wider text-slate-400">Fusion Confidence</span>
-                          <span className="px-1.5 py-0.5 rounded text-[7px] font-bold bg-blue-500/10 border border-blue-500/20 text-blue-400">Optimal</span>
-                        </div>
-                        <div>
-                          <span className="text-xl font-extrabold text-slate-100">78.4%</span>
-                          <p className="text-[8px] text-slate-500 mt-0.5">Cross-referencing metrics</p>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Mock Chart & Explanations */}
-                    <div className="grid grid-cols-[2fr_1fr] gap-3">
-                      <div className="bg-slate-900/60 border border-slate-850 p-3.5 rounded-xl h-36 flex flex-col justify-between">
-                        <span className="text-[8px] font-bold uppercase tracking-wider text-slate-400">Glucose Fluctuations (24h)</span>
-                        <div className="flex-1 flex items-end gap-1.5 h-20 pt-2">
-                          {[45, 60, 52, 85, 90, 75, 68, 92, 110, 80, 70, 85].map((val, idx) => (
-                            <div key={idx} className="flex-1 flex flex-col items-center gap-1 group">
-                              <div 
-                                className={`w-full rounded-t-sm transition-all duration-300 ${val > 90 ? 'bg-rose-500/80' : 'bg-blue-500/80'}`} 
-                                style={{ height: `${(val / 120) * 100}%` }}
-                              />
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-
-                      <div className="bg-slate-900/60 border border-slate-850 p-3.5 rounded-xl h-36 flex flex-col justify-between">
-                        <span className="text-[8px] font-bold uppercase tracking-wider text-slate-400">Explainable AI (SHAP)</span>
-                        <div className="space-y-1.5 mt-1">
-                          <div className="space-y-0.5">
-                            <div className="flex justify-between text-[7px] text-slate-400 font-medium">
-                              <span>HbA1c levels (+12%)</span>
-                              <span className="text-rose-400">+12%</span>
-                            </div>
-                            <div className="w-full bg-slate-800 rounded-full h-0.5">
-                              <div className="bg-rose-500 h-0.5 rounded-full" style={{ width: '70%' }} />
-                            </div>
+                  <div className="rounded-xl border border-slate-800 bg-slate-900 p-3.5">
+                    <span className="text-[8px] uppercase tracking-wider text-slate-500 font-medium block mb-3">SHAP Feature Impact</span>
+                    <div className="space-y-2">
+                      {[
+                        { label: 'HbA1c', pct: 68, color: 'bg-rose-500' },
+                        { label: 'BMI', pct: 42, color: 'bg-rose-400' },
+                        { label: 'SBP', pct: 22, color: 'bg-emerald-500' },
+                      ].map((f) => (
+                        <div key={f.label} className="space-y-0.5">
+                          <div className="flex justify-between text-[7px] text-slate-400">
+                            <span>{f.label}</span>
                           </div>
-                          <div className="space-y-0.5">
-                            <div className="flex justify-between text-[7px] text-slate-400 font-medium">
-                              <span>BMI (+8%)</span>
-                              <span className="text-rose-400">+8%</span>
-                            </div>
-                            <div className="w-full bg-slate-800 rounded-full h-0.5">
-                              <div className="bg-rose-400 h-0.5 rounded-full" style={{ width: '45%' }} />
-                            </div>
-                          </div>
-                          <div className="space-y-0.5">
-                            <div className="flex justify-between text-[7px] text-slate-400 font-medium">
-                              <span>Systolic BP (-3%)</span>
-                              <span className="text-emerald-400">-3%</span>
-                            </div>
-                            <div className="w-full bg-slate-800 rounded-full h-0.5">
-                              <div className="bg-emerald-500 h-0.5 rounded-full" style={{ width: '20%' }} />
-                            </div>
+                          <div className="h-1 bg-slate-800 rounded-full overflow-hidden">
+                            <div className={`h-full rounded-full ${f.color}`} style={{ width: `${f.pct}%` }} />
                           </div>
                         </div>
-                      </div>
+                      ))}
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
-
-            {/* Richer Technology Pills */}
-            <div className="mt-20 flex flex-col items-center gap-4">
-              <span className="text-xs font-bold tracking-wider text-slate-400 uppercase">Powered By</span>
-              <div className="flex flex-wrap justify-center gap-4 max-w-4xl px-4">
-                {[
-                  { name: 'Next.js', emoji: '⚡' },
-                  { name: 'FastAPI', emoji: '⚙' },
-                  { name: 'Python', emoji: '🐍' },
-                  { name: 'TensorFlow', emoji: '🧠' },
-                  { name: 'Scikit-Learn', emoji: '📊' },
-                  { name: 'OpenCV', emoji: '👁' },
-                  { name: 'MongoDB', emoji: '🍃' }
-                ].map((tech) => (
-                  <span 
-                    key={tech.name} 
-                    className="px-5 py-2.5 bg-white hover:bg-slate-50 border border-slate-200 hover:border-blue-500 rounded-2xl text-sm font-bold text-slate-700 transition-all shadow-sm hover:shadow-md cursor-default flex items-center gap-2.5"
-                  >
-                    <span className="text-base select-none">{tech.emoji}</span>
-                    <span>{tech.name}</span>
-                  </span>
-                ))}
               </div>
             </div>
           </motion.div>
         </div>
-      </div>
+      </section>
 
-      {/* Project Stats Section */}
-      <div className="bg-slate-900 border-y border-slate-800 py-16 relative overflow-hidden">
-        {/* Subtle glow */}
-        <div className="absolute inset-0 bg-blue-600/5 blur-3xl pointer-events-none" />
-        
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-slate-800">
-            <div className="py-4 md:py-0">
-              <p className="text-4xl md:text-5xl font-extrabold text-blue-400">78%</p>
-              <p className="mt-2 text-xs font-bold text-slate-400 uppercase tracking-wider">Prediction Accuracy</p>
-            </div>
-            <div className="py-4 md:py-0">
-              <p className="text-4xl md:text-5xl font-extrabold text-blue-400">7</p>
-              <p className="mt-2 text-xs font-bold text-slate-400 uppercase tracking-wider">Clinical Features</p>
-            </div>
-            <div className="py-4 md:py-0">
-              <p className="text-4xl md:text-5xl font-extrabold text-blue-400">3</p>
-              <p className="mt-2 text-xs font-bold text-slate-400 uppercase tracking-wider">AI Models</p>
-            </div>
-            <div className="py-4 md:py-0">
-              <p className="text-4xl md:text-5xl font-extrabold text-blue-400">&lt;500 ms</p>
-              <p className="mt-2 text-xs font-bold text-slate-400 uppercase tracking-wider">Inference Time</p>
-            </div>
-          </div>
+      {/* ── Stats Bar ─────────────────────────────── */}
+      <section className="border-y border-slate-200 bg-white py-12">
+        <div className="max-w-6xl mx-auto px-5">
+          <dl className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            {[
+              { value: '78%', label: 'Model accuracy', sub: 'Random Forest on PIMA dataset' },
+              { value: '7', label: 'Clinical features', sub: 'Glucose, BMI, HbA1c, SBP, age…' },
+              { value: '3', label: 'AI models', sub: 'RF · SVM · FER emotion detector' },
+              { value: '<500ms', label: 'Inference latency', sub: 'End-to-end on Railway free tier' },
+            ].map((s) => (
+              <div key={s.label} className="flex flex-col gap-1">
+                <dt className="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight">{s.value}</dt>
+                <dd className="text-sm font-medium text-slate-700 mt-0.5">{s.label}</dd>
+                <dd className="text-xs text-slate-400 mt-0.5">{s.sub}</dd>
+              </div>
+            ))}
+          </dl>
         </div>
-      </div>
+      </section>
 
-      {/* Features Section */}
-      <div className="py-16 bg-white sm:py-24 border-y border-slate-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-base font-semibold text-blue-600 tracking-wide uppercase">Core Features</h2>
-            <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-slate-900 sm:text-4xl">
-              A Unified Healthcare Approach
+      {/* ── How It Works ─────────────────────────── */}
+      <section className="py-24 px-5">
+        <div className="max-w-6xl mx-auto">
+          <div className="mb-14">
+            <p className="text-xs uppercase tracking-widest text-slate-400 font-medium mb-3">How it works</p>
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 max-w-xl">
+              Two inputs. One unified risk score.
+            </h2>
+            <p className="mt-4 text-slate-500 max-w-lg">
+              The patient submits vitals through the portal and optionally captures a webcam frame. Both signals are processed in parallel and fused into a single clinical recommendation.
             </p>
           </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <motion.div 
-              whileHover={{ y: -8 }}
-              className="bg-white p-8 rounded-3xl border border-slate-200 shadow-lg hover:border-blue-500 transition-all duration-300 flex flex-col justify-between"
-            >
-              <div>
-                <div className="h-12 w-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center mb-6">
-                  <Activity className="h-6 w-6" />
-                </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">Diabetes Prediction</h3>
-                <p className="text-slate-600">Early-stage risk assessment using comprehensive metabolic data to predict and manage diabetes proactively.</p>
-              </div>
-            </motion.div>
-            
-            <motion.div 
-              whileHover={{ y: -8 }}
-              className="bg-white p-8 rounded-3xl border border-slate-200 shadow-lg hover:border-blue-500 transition-all duration-300 flex flex-col justify-between"
-            >
-              <div>
-                <div className="h-12 w-12 bg-indigo-100 text-indigo-600 rounded-xl flex items-center justify-center mb-6">
-                  <Brain className="h-6 w-6" />
-                </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">Emotion Detection</h3>
-                <p className="text-slate-600">Integrated computer vision analyzing patient facial markers to assess stress, anxiety, and overall mental wellbeing.</p>
-              </div>
-            </motion.div>
-            
-            <motion.div 
-              whileHover={{ y: -8 }}
-              className="bg-white p-8 rounded-3xl border border-slate-200 shadow-lg hover:border-blue-500 transition-all duration-300 flex flex-col justify-between"
-            >
-              <div>
-                <div className="h-12 w-12 bg-teal-100 text-teal-600 rounded-xl flex items-center justify-center mb-6">
-                  <Shield className="h-6 w-6" />
-                </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">Multi-Role Security</h3>
-                <p className="text-slate-600">Secure, partitioned access ensuring doctors monitor holistic patient portfolios while patients access their private metrics.</p>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </div>
 
-      {/* Creators / Team Section */}
-      <div className="py-16 sm:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-base font-semibold text-blue-600 tracking-wide uppercase">Our Creators</h2>
-            <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-slate-900 sm:text-4xl">
-              Meet the Team
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            {TEAM_MEMBERS.map((member, i) => (
-              <motion.div 
-                key={i}
-                whileHover={{ y: -8 }}
-                className="bg-white p-8 rounded-3xl shadow-lg border border-slate-200 hover:border-blue-500 transition-all duration-300 text-left flex flex-col justify-between"
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {[
+              {
+                icon: FlaskConical,
+                step: '01',
+                title: 'Vitals input',
+                body: 'Patients enter glucose, BMI, blood pressure, age, and other biomarkers. Missing values are imputed automatically using KNNImputer.',
+                accent: 'border-blue-500/30 bg-blue-50/40',
+                iconColor: 'text-blue-600 bg-blue-100',
+              },
+              {
+                icon: ScanFace,
+                step: '02',
+                title: 'Emotion analysis',
+                body: 'An optional webcam snapshot is passed through the FER library. The detected affect (e.g. stressed, neutral) is translated into a clinical descriptor.',
+                accent: 'border-violet-500/30 bg-violet-50/40',
+                iconColor: 'text-violet-600 bg-violet-100',
+              },
+              {
+                icon: Microscope,
+                step: '03',
+                title: 'Fusion & output',
+                body: 'The Clinical Fusion Engine combines the Random Forest risk probability, SVM confidence score, and emotion signal into one recommendation with SHAP explainability.',
+                accent: 'border-emerald-500/30 bg-emerald-50/30',
+                iconColor: 'text-emerald-600 bg-emerald-100',
+              },
+            ].map((f) => (
+              <motion.div
+                key={f.step}
+                whileHover={{ y: -4 }}
+                transition={{ duration: 0.2 }}
+                className={`rounded-2xl border p-7 ${f.accent}`}
               >
-                <div>
-                  {/* Header Row */}
-                  <div className="flex items-center gap-3.5 mb-5">
-                    <div className={`h-12 w-12 bg-gradient-to-br ${member.gradient} rounded-full flex items-center justify-center text-white text-sm font-extrabold shadow-sm`}>
-                      {member.initials}
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-bold text-slate-900">{member.name}</h3>
-                      <p className="text-xs font-semibold text-blue-600">{member.role}</p>
-                    </div>
+                <div className={`h-10 w-10 rounded-xl flex items-center justify-center mb-5 ${f.iconColor}`}>
+                  <f.icon className="h-5 w-5" />
+                </div>
+                <div className="text-[10px] font-bold tracking-widest text-slate-400 mb-2">STEP {f.step}</div>
+                <h3 className="text-base font-semibold text-slate-900 mb-2">{f.title}</h3>
+                <p className="text-sm text-slate-500 leading-relaxed">{f.body}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Tech Stack ───────────────────────────── */}
+      <section className="border-t border-slate-100 bg-white py-16 px-5">
+        <div className="max-w-6xl mx-auto">
+          <p className="text-xs uppercase tracking-widest text-slate-400 font-medium text-center mb-8">Built with</p>
+          <div className="flex flex-wrap justify-center gap-x-10 gap-y-5">
+            {TECH.map((t) => (
+              <div key={t.name} className="flex items-center gap-2 text-slate-500 hover:text-slate-800 transition-colors cursor-default">
+                <span
+                  className="h-2.5 w-2.5 rounded-sm flex-shrink-0"
+                  style={{ background: t.fill }}
+                />
+                <span className="text-sm font-medium">{t.name}</span>
+              </div>
+            ))}
+          </div>
+          <p className="text-center text-xs text-slate-400 mt-6">
+            Deployed on <span className="font-medium text-slate-500">Railway</span> (backend) and <span className="font-medium text-slate-500">Vercel</span> (frontend).
+          </p>
+        </div>
+      </section>
+
+      {/* ── Team ─────────────────────────────────── */}
+      <section className="py-24 px-5">
+        <div className="max-w-6xl mx-auto">
+          <div className="mb-14">
+            <p className="text-xs uppercase tracking-widest text-slate-400 font-medium mb-3">Team</p>
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900">
+              Built by three students.
+            </h2>
+            <p className="mt-3 text-slate-500">
+              Vardhaman College of Engineering, Hyderabad — B.Tech CSE, 2025–26.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {TEAM_MEMBERS.map((m) => (
+              <motion.div
+                key={m.name}
+                whileHover={{ y: -4 }}
+                transition={{ duration: 0.2 }}
+                className="bg-white border border-slate-200 rounded-2xl p-7 flex flex-col gap-4 hover:border-slate-300 transition-colors shadow-sm"
+              >
+                <div className="flex items-center gap-3">
+                  <div className={`h-10 w-10 rounded-full ${m.color} flex items-center justify-center text-white text-xs font-bold flex-shrink-0`}>
+                    {m.initials}
                   </div>
-                  <p className="text-sm text-slate-500 leading-relaxed">{member.desc}</p>
-                  
-                  {/* Focus pill tags */}
-                  <div className="flex flex-wrap gap-1.5 mt-5">
-                    {member.tags.map((tag) => (
-                      <span key={tag} className="px-2.5 py-1 bg-slate-50 border border-slate-100 rounded-lg text-[10px] font-bold text-slate-500 tracking-wide uppercase">
-                        {tag}
-                      </span>
-                    ))}
+                  <div>
+                    <p className="text-sm font-semibold text-slate-900">{m.name}</p>
+                    <p className="text-xs text-slate-400 mt-0.5">{m.role}</p>
                   </div>
                 </div>
-
-                <div className="flex gap-6 mt-6 pt-5 border-t border-slate-100">
-                  <a 
-                    href={member.github} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-slate-500 hover:text-blue-600 hover:-translate-y-0.5 hover:underline transition-all duration-200 text-sm font-semibold"
-                  >
-                    <Github className="h-4 w-4" />
-                    GitHub
+                <p className="text-sm text-slate-500 leading-relaxed">{m.desc}</p>
+                <div className="flex items-center gap-4 mt-auto pt-3 border-t border-slate-100">
+                  <a href={m.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-xs text-slate-400 hover:text-slate-700 transition-colors font-medium">
+                    <Github className="h-3.5 w-3.5" /> GitHub
                   </a>
-                  <a 
-                    href={member.linkedin} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-slate-500 hover:text-blue-600 hover:-translate-y-0.5 hover:underline transition-all duration-200 text-sm font-semibold"
-                  >
-                    <Linkedin className="h-4 w-4" />
-                    LinkedIn
+                  <a href={m.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-xs text-slate-400 hover:text-slate-700 transition-colors font-medium">
+                    <Linkedin className="h-3.5 w-3.5" /> LinkedIn
                   </a>
                 </div>
               </motion.div>
             ))}
           </div>
 
-          {/* Responsibilities Table */}
-          <div className="mt-16 overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-lg max-w-5xl mx-auto">
-            <div className="px-6 py-4 border-b border-slate-200 bg-slate-50">
-              <h3 className="text-lg font-bold text-slate-900">Roles & Responsibilities</h3>
+          {/* Responsibilities */}
+          <div className="mt-10 rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
+            <div className="bg-slate-50 border-b border-slate-200 px-6 py-4">
+              <h3 className="text-sm font-semibold text-slate-700">Roles & Responsibilities</h3>
             </div>
             <div className="overflow-x-auto">
-              <table className="w-full text-left border-collapse">
+              <table className="w-full text-sm">
                 <thead>
-                  <tr className="border-b border-slate-200 bg-slate-50/50 text-xs font-bold uppercase tracking-wider text-slate-400">
-                    <th className="px-6 py-4">Member</th>
-                    <th className="px-6 py-4">Title</th>
-                    <th className="px-6 py-4">Responsibilities</th>
+                  <tr className="border-b border-slate-100 text-left">
+                    <th className="px-6 py-3 text-xs text-slate-400 font-medium">Member</th>
+                    <th className="px-6 py-3 text-xs text-slate-400 font-medium">Title</th>
+                    <th className="px-6 py-3 text-xs text-slate-400 font-medium">Scope</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-100 text-sm">
+                <tbody className="divide-y divide-slate-100">
                   {[
-                    {
-                      name: 'Syed Uzair Mohiuddin',
-                      title: 'Full Stack & AI Engineer',
-                      roles: 'Frontend development, FastAPI backend, API integration, deployment (Railway & Vercel), authentication, UI/UX, project integration'
-                    },
-                    {
-                      name: 'Sarasam Chinmaee Reddy',
-                      title: 'AI Architect',
-                      roles: 'System architecture, multimodal AI workflow, project planning, research, clinical pipeline design'
-                    },
-                    {
-                      name: 'Manohar Yadav Boddu',
-                      title: 'Machine Learning Engineer',
-                      roles: 'ML model development, preprocessing, feature engineering, explainability (SHAP/PDP), model evaluation'
-                    }
-                  ].map((row, i) => (
-                    <tr key={i} className="hover:bg-slate-50/50 transition-colors">
-                      <td className="px-6 py-4 font-semibold text-slate-900 whitespace-nowrap">{row.name}</td>
-                      <td className="px-6 py-4 text-blue-600 font-medium whitespace-nowrap">{row.title}</td>
-                      <td className="px-6 py-4 text-slate-500 leading-relaxed">{row.roles}</td>
+                    { name: 'Syed Uzair Mohiuddin', title: 'Full Stack & AI Engineer', scope: 'Next.js frontend, FastAPI backend, REST API, Railway/Vercel deployment, auth, UI/UX' },
+                    { name: 'Sarasam Chinmaee Reddy', title: 'AI Architect', scope: 'System design, multimodal AI workflow, clinical pipeline architecture, research' },
+                    { name: 'Manohar Yadav Boddu', title: 'ML Engineer', scope: 'Model training, preprocessing, feature engineering, SHAP/PDP explainability, evaluation' },
+                  ].map((r) => (
+                    <tr key={r.name} className="hover:bg-slate-50 transition-colors">
+                      <td className="px-6 py-4 font-medium text-slate-900 whitespace-nowrap">{r.name}</td>
+                      <td className="px-6 py-4 text-slate-500 whitespace-nowrap">{r.title}</td>
+                      <td className="px-6 py-4 text-slate-500">{r.scope}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -503,54 +418,22 @@ export default function LandingPage() {
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* Project Highlights Section */}
-      <div className="py-16 bg-white border-t border-slate-200 sm:py-24">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-base font-semibold text-blue-600 tracking-wide uppercase">Key Highlights</h2>
-            <p className="mt-2 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
-              Project Highlights
-            </p>
+      {/* ── Footer ───────────────────────────────── */}
+      <footer className="border-t border-slate-200 bg-white py-8 px-5">
+        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-400">
+          <div className="flex items-center gap-2">
+            <span className="h-5 w-5 rounded bg-slate-900 flex items-center justify-center">
+              <Activity className="h-3 w-3 text-white" />
+            </span>
+            <span className="font-medium text-slate-600">BioSense AI</span>
+            <span>— Final Year Project, 2026</span>
           </div>
-          <div className="bg-slate-50 rounded-3xl p-8 md:p-12 border border-slate-100 shadow-lg">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {[
-                '78% ML Accuracy',
-                'Random Forest + SVM',
-                'Explainable AI (SHAP)',
-                'Real-Time Emotion Detection',
-                'FastAPI REST API',
-                'Next.js 16 Frontend',
-                'Railway + Vercel Deployment',
-                'Multi-modal Clinical Fusion Engine'
-              ].map((highlight, index) => (
-                <div key={index} className="flex items-center gap-3">
-                  <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-emerald-600">
-                    <Check className="h-4 w-4 stroke-[3]" />
-                  </div>
-                  <span className="text-slate-700 font-semibold">{highlight}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Footer */}
-      <footer className="bg-slate-950 py-10 text-slate-500 border-t border-slate-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs font-semibold">
-          <div className="flex flex-wrap items-center justify-center gap-1.5">
-            <span>Built with</span>
-            {['Next.js', 'FastAPI', 'Python', 'Scikit-Learn', 'Railway', 'Vercel'].map((item, idx, arr) => (
-              <span key={item} className="text-slate-400">
-                {item}{idx < arr.length - 1 ? ' •' : ''}
-              </span>
-            ))}
-          </div>
-          <div>
-            © 2026 BioSense AI
+          <div className="flex items-center gap-4">
+            <a href="https://github.com/SyedUzaiir/biosense-ai" target="_blank" rel="noopener noreferrer" className="hover:text-slate-700 transition-colors">GitHub</a>
+            <a href="https://biosense-ai-production.up.railway.app/docs" target="_blank" rel="noopener noreferrer" className="hover:text-slate-700 transition-colors">API Docs</a>
+            <span>MIT License</span>
           </div>
         </div>
       </footer>
