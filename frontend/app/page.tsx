@@ -85,12 +85,6 @@ export default function LandingPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55, ease: 'easeOut' }}
           >
-            {/* Label */}
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 text-blue-700 text-xs font-medium mb-7">
-              <span className="h-1.5 w-1.5 rounded-full bg-blue-500 animate-pulse" />
-              Final Year Mini Project — Vardhaman College of Engineering
-            </div>
-
             {/* Headline */}
             <h1 className="text-[2.75rem] sm:text-6xl lg:text-7xl font-bold tracking-[-0.03em] leading-[1.08] text-slate-900 max-w-4xl">
               Clinical risk assessment,{' '}

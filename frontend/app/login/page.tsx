@@ -3,7 +3,8 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Lock, Mail, ArrowRight, HeartPulse, UserCircle } from 'lucide-react';
+import Link from 'next/link';
+import { Lock, Mail, ArrowRight, HeartPulse, UserCircle, ChevronLeft } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { MOCK_PATIENTS } from '@/lib/mockData';
 
@@ -59,7 +60,14 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-slate-50 p-4">
+    <div className="flex min-h-screen flex-col items-center justify-center bg-slate-50 p-4 gap-4">
+      <Link
+        href="/"
+        className="flex items-center gap-1.5 text-sm text-slate-400 hover:text-slate-700 transition-colors self-center"
+      >
+        <ChevronLeft className="h-4 w-4" />
+        Back to home
+      </Link>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
