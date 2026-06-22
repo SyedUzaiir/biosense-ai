@@ -229,7 +229,7 @@ export default function LandingPage() {
                           <span className="px-1.5 py-0.5 rounded text-[7px] font-bold bg-blue-500/10 border border-blue-500/20 text-blue-400">Optimal</span>
                         </div>
                         <div>
-                          <span className="text-xl font-extrabold text-slate-100">95.0%</span>
+                          <span className="text-xl font-extrabold text-slate-100">78.4%</span>
                           <p className="text-[8px] text-slate-500 mt-0.5">Cross-referencing metrics</p>
                         </div>
                       </div>
@@ -324,7 +324,7 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-slate-800">
             <div className="py-4 md:py-0">
-              <p className="text-4xl md:text-5xl font-extrabold text-blue-400">95%</p>
+              <p className="text-4xl md:text-5xl font-extrabold text-blue-400">78%</p>
               <p className="mt-2 text-xs font-bold text-slate-400 uppercase tracking-wider">Prediction Accuracy</p>
             </div>
             <div className="py-4 md:py-0">
@@ -517,7 +517,7 @@ export default function LandingPage() {
           <div className="bg-slate-50 rounded-3xl p-8 md:p-12 border border-slate-100 shadow-lg">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {[
-                '95% ML Accuracy',
+                '78% ML Accuracy',
                 'Random Forest + SVM',
                 'Explainable AI (SHAP)',
                 'Real-Time Emotion Detection',

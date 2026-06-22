@@ -1,52 +1,48 @@
-# 🩺 BioSense AI: HealthGuard System
+# BioSense AI — HealthGuard System
 
 ![License](https://img.shields.io/badge/License-MIT-blue.svg) ![Next.js](https://img.shields.io/badge/Next.js-16.x-black?logo=next.js) ![FastAPI](https://img.shields.io/badge/FastAPI-0.100.x-009688?logo=fastapi) ![Python](https://img.shields.io/badge/Python-3.9+-3776AB?logo=python) ![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue?logo=typescript)
 
-> **AI-powered multimodal healthcare platform combining physiological biomarkers, explainable machine learning, and emotion-aware clinical assessment.**
+> A multimodal clinical intelligence platform that combines physiological biomarkers, machine learning, and facial emotion analysis to assist in early-stage diabetes risk assessment.
 
 ---
 
-## 🌐 Live Demo
+## Live Demo
 
-- 🚀 **Frontend:** https://biosenseai.vercel.app/
-- ⚙️ **Backend API:** https://biosense-ai-production.up.railway.app
-- 📖 **API Documentation:** https://biosense-ai-production.up.railway.app/docs
-
+- **Frontend:** https://biosenseai.vercel.app/
+- **Backend API:** https://biosense-ai-production.up.railway.app
+- **API Docs (Swagger):** https://biosense-ai-production.up.railway.app/docs
 
 ---
 
-## 📸 Project Preview
+## Project Screenshots
 
 <p align="center">
   <img src="docs/screenshots/landing_page.png" alt="Landing Page" width="800" />
   <br />
-  <em>1. BioSense AI Landing Page</em>
+  <em>Landing Page</em>
 </p>
 
 <p align="center">
   <img src="docs/screenshots/clinician_dashboard.png" alt="Clinician Dashboard" width="800" />
   <br />
-  <em>2. Clinician Dashboard</em>
+  <em>Clinician Dashboard</em>
 </p>
 
 <p align="center">
   <img src="docs/screenshots/patient_dashboard.png" alt="Patient Dashboard" width="800" />
   <br />
-  <em>3. Patient Portal & Webcam Emotion Tracking</em>
+  <em>Patient Portal with Webcam Emotion Tracking</em>
 </p>
 
 <p align="center">
   <img src="docs/screenshots/risk_analysis.png" alt="Risk Analysis" width="800" />
   <br />
-  <em>4. Explainability & SHAP Risk Analysis</em>
+  <em>Explainability & SHAP Risk Analysis</em>
 </p>
-
 
 ---
 
-## 📐 System Architecture
-
-The following diagram illustrates how the frontend app, backend API routes, and machine learning components interact:
+## System Architecture
 
 ```mermaid
 graph TD
@@ -77,198 +73,175 @@ graph TD
     PR -- "Standardized Array" --> SVM
     API -- "Webcam Frame" --> FER
     
-    RF -- "Vitals Risk Prob" --> FE
-    SVM -- "Vitals Confidence" --> FE
-    FER -- "Detected Emotional Affect" --> FE
+    RF -- "Risk Probability" --> FE
+    SVM -- "Confidence Score" --> FE
+    FER -- "Detected Emotion" --> FE
     
-    FE -- "Unified Diagnostic Recommendation" --> C
+    FE -- "Fused Diagnostic Output" --> C
     RF -- "SHAP Waterfall Plot" --> SHAP
 ```
 
 ---
 
-## 🌟 Key Features
+## Features
 
-### 👨‍⚕️ Clinician Dashboard
-- **Risk Stratification**: Real-time patient classification into Stable 🟢, At Risk 🟡, and High Risk 🔴 status.
-- **Biomarker Analytics**: Instant patient vital comparison with clinical benchmark limits.
-- **24h Risk Trajectories**: Monotonic spline-interpolated line charts forecasting projected blood glucose paths.
+### Clinician Dashboard
+- **Patient Risk Stratification** — classifies patients into Stable 🟢, At Risk 🟡, or High Risk 🔴 in real time.
+- **Biomarker Comparison** — compares individual patient vitals against established clinical reference ranges.
+- **24h Glucose Trajectory** — spline-interpolated charts that project a patient's likely glucose path over the next 24 hours.
 
-### 📱 Patient Portal
-- **Multimodal Capture**: Physical metric inputs coupled with webcam facial analysis.
-- **Clinical Fusion Engine**: Cross-references physical diabetes indicators with psychological state evaluations.
-- **Standardized Affect**: Converts raw facial labels into clinical affect terminology (e.g. `Elevated Stress Response`).
+### Patient Portal
+- **Multimodal Input** — captures physical vitals alongside a webcam snapshot for emotion analysis.
+- **Clinical Fusion Engine** — cross-references metabolic risk factors with detected psychological indicators.
+- **Affect Standardization** — maps raw emotion labels to clinical terminology (e.g., `Elevated Stress Response`).
 
-### 🧬 ML & Explainability (XAI) Pipeline
-- **Imputation**: Automated missing data treatment using a robust KNNImputer model.
-- **Dual Ensemble**: Combines Random Forest Classification with a calibrated Support Vector Classifier pipeline.
-- **Deep Explanations**: Generates local instance SHAP Waterfall plots and Global Feature Importance trends.
+### ML & Explainability Pipeline
+- **Missing Data Handling** — KNNImputer fills in incomplete readings before inference.
+- **Dual-Model Inference** — a Random Forest classifier and a calibrated SVM run in parallel; their outputs are fused.
+- **Explainability (XAI)** — generates per-prediction SHAP waterfall plots and global feature importance charts so clinicians can audit decisions.
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 ### Frontend
-* **Next.js** (App Router)
-* **React**
-* **TypeScript**
-* **Tailwind CSS**
-* **Framer Motion**
-* **Recharts**
+- Next.js (App Router), React, TypeScript
+- Tailwind CSS, Framer Motion, Recharts
 
 ### Backend
-* **FastAPI**
-* **Python**
-* **Uvicorn**
+- FastAPI, Python, Uvicorn
 
 ### Machine Learning
-* **Scikit-Learn**
-* **SHAP**
-* **Pandas**
-* **OpenCV**
-* **FER** (Face Emotion Recognition)
+- Scikit-Learn, SHAP, Pandas
+- OpenCV, FER (Facial Expression Recognition)
 
 ### Deployment
-* **Railway**
-* **Vercel**
-* **GitHub**
+- Railway (backend), Vercel (frontend), GitHub
 
 ---
 
-## 📂 Folder Structure
+## Folder Structure
 
 ```
 biosense-ai/
 ├── frontend/               # Next.js web application
-│   ├── app/                # App Router files
-│   ├── components/         # Reusable gauge, webcam, and vitals layout parts
-│   └── .env.local          # Local Next.js connection setup
+│   ├── app/                # App Router pages and layouts
+│   ├── components/         # Reusable UI components (gauge, webcam, vitals)
+│   └── .env.local          # Local environment config
 ├── backend/                # FastAPI application
-│   ├── app.py              # API router, CORS origins, and Fusion Engine
+│   ├── app.py              # Routes, CORS config, and Clinical Fusion Engine
 │   ├── version.py          # Release version metadata
-│   └── .env                # Local backend configs
-├── ml/                     # Python ML training & inference pipeline
-│   ├── dataset/            # CSV dataset storage
-│   ├── models/             # Trained models & metadata (.joblib, .json)
-│   ├── artifacts/          # Explainability & evaluation plots
-│   ├── src/                # Preprocessing, trainer, and predictor classes
-│   └── train.py            # Orchestrator to train and export models
+│   └── .env                # Backend environment config
+├── ml/                     # ML training and inference pipeline
+│   ├── dataset/            # Raw CSV datasets
+│   ├── models/             # Exported models and metadata (.joblib, .json)
+│   ├── artifacts/          # Evaluation plots and explainability outputs
+│   ├── src/                # Preprocessing, trainer, and predictor modules
+│   └── train.py            # Entry point to train and export all models
 └── archive/
-    └── matlab-legacy/      # Original research MATLAB scripts (archived)
+    └── matlab-legacy/      # Original MATLAB research scripts (archived)
 ```
 
 ---
 
-## 🔌 API Endpoints
+## API Reference
 
-FastAPI automatically generates interactive Swagger documentation at `http://127.0.0.1:8000/docs`.
+Interactive Swagger docs are available at `http://127.0.0.1:8000/docs` when running locally.
 
 ### `GET /api/v1/health`
-Checks application health, confirming whether the models and classifiers loaded correctly.
-- **Response Example**:
-  ```json
-  {
-    "status": "healthy",
-    "app_name": "BioSense AI",
-    "version": "1.0.0",
-    "model_version": "RandomForest-v1",
-    "diagnostics": {
-      "ml_models_loaded": true,
-      "emotion_detector_loaded": true
-    }
+Returns application health status, confirming whether ML models and the emotion detector loaded correctly.
+
+```json
+{
+  "status": "healthy",
+  "app_name": "BioSense AI",
+  "version": "1.0.0",
+  "model_version": "RandomForest-v1",
+  "diagnostics": {
+    "ml_models_loaded": true,
+    "emotion_detector_loaded": true
   }
-  ```
+}
+```
 
 ### `POST /api/v1/predict`
-Calculates diabetes risk category and generates the 24-hour glucose trajectory coordinate array.
-- **Payload**: `VitalsPayload` JSON object (age, sex, BMI, glucose, SBP, etc.)
-- **Response**: Risk probability, classification label (`Stable 🟢`, `At Risk 🟡`, `High Risk 🔴`), top features, and trajectory list.
+Accepts a patient vitals payload and returns a diabetes risk probability, classification label, top contributing features, and a 24-hour glucose trajectory.
+
+- **Body:** `VitalsPayload` JSON (age, sex, BMI, glucose, SBP, etc.)
+- **Response:** `{ risk_probability, label, top_features, trajectory }`
 
 ### `POST /api/v1/fusion`
-The unified Clinical Fusion Engine. Accepts vitals JSON variables and an optional webcam snapshot.
-- **Payload**: Multipart form data with an optional `image` file and a `vitals` JSON string.
-- **Response**: Fused insight, physical risk probability, detected emotional affect, and confidence level.
+Runs the full Clinical Fusion Engine — accepts both vitals and an optional webcam image, then returns a combined diagnostic recommendation.
+
+- **Body:** Multipart form with `vitals` (JSON string) and an optional `image` file
+- **Response:** `{ fused_insight, physical_risk_prob, emotion_affect, confidence }`
 
 ---
 
-## ☁️ Deployment
+## Deployment
 
-### Frontend
-- Hosted on **Vercel**
+| Layer      | Platform  |
+|------------|-----------|
+| Frontend   | Vercel    |
+| Backend    | Railway   |
+| ML Models  | Loaded at FastAPI startup from `/ml/models/` |
 
-### Backend
-- Hosted on **Railway**
+### Required Environment Variables
 
-### Machine Learning Models
-- Loaded dynamically during FastAPI server startup.
-
-### Environment Variables
-
-#### Frontend
+**Frontend (`frontend/.env.local`)**
 ```env
-NEXT_PUBLIC_API_URL
+NEXT_PUBLIC_API_URL=<your_backend_url>
 ```
 
-#### Backend
+**Backend (`backend/.env`)**
 ```env
-ALLOWED_ORIGINS
+ALLOWED_ORIGINS=<comma_separated_frontend_origins>
 ```
-
-### Health Endpoint
-- Monitor status via `GET /api/v1/health`
 
 ---
 
-## 🚀 Local Setup
+## Local Setup
 
 ### Prerequisites
-- Node.js (v20+)
-- Python (3.9+)
+- Node.js v20+
+- Python 3.9+
 
-### 1. Backend API & ML Installation
-Navigate to `/backend` and install dependencies:
+### 1. Backend & ML
+
 ```bash
 cd backend
 pip install -r requirements.txt
 pip install -r ../ml/requirements.txt
-```
-
-Start the FastAPI application:
-```bash
 python -m uvicorn app:app --host 127.0.0.1 --port 8000 --reload
 ```
 
-*(Note: Verify that models exist inside `/ml/models`. If models are missing, run `python ml/train.py` to train and export them first).*
+> If the `/ml/models/` directory is empty, run `python ml/train.py` first to train and export the models.
 
-### 2. Frontend Installation
-Navigate to `/frontend` and install Node packages:
+### 2. Frontend
+
 ```bash
-cd ../frontend
+cd frontend
 npm install
-```
-
-Start the Next.js development server:
-```bash
 npm run dev
 ```
 
-Open `http://localhost:3000` inside your browser.
+Open `http://localhost:3000` in your browser.
 
 ---
 
-## 🚀 Roadmap
+## Roadmap
 
-- [ ] Authentication
-- [ ] Patient History
-- [ ] Electronic Health Record Integration
-- [ ] Explainable AI Dashboard
-- [ ] Docker Support
-- [ ] CI/CD Pipeline
-- [ ] Model Monitoring
+- [ ] JWT-based authentication
+- [ ] Patient history and longitudinal tracking
+- [ ] EHR (Electronic Health Record) integration
+- [ ] Interactive XAI dashboard
+- [ ] Docker support
+- [ ] CI/CD pipeline
+- [ ] Model drift monitoring
 
 ---
 
-## 👥 Contributors
+## Contributors
 
 | Name | Role |
 |------|------|
@@ -278,5 +251,6 @@ Open `http://localhost:3000` inside your browser.
 
 ---
 
-## 🛡️ License
-This project is licensed under the standard MIT License. See the [LICENSE](LICENSE) file for details.
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
