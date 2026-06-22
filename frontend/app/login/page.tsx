@@ -1,5 +1,7 @@
 "use client";
 
+import Image from 'next/image';
+
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -74,12 +76,11 @@ export default function LoginPage() {
         transition={{ duration: 0.5 }}
         className="w-full max-w-md overflow-hidden rounded-2xl bg-white shadow-xl"
       >
-        <div className="bg-blue-600 p-8 text-center text-white relative">
-          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-blue-500 shadow-inner">
-            <HeartPulse className="h-8 w-8 text-white" />
+        <div className="bg-white border-b border-slate-100 px-8 pt-8 pb-6 text-center">
+          <div className="flex justify-center mb-2">
+            <Image src="/logo.png" alt="BioSense AI" width={180} height={48} className="h-12 w-auto object-contain" priority />
           </div>
-          <h1 className="text-3xl font-bold">BioSense AI</h1>
-          <p className="mt-2 text-blue-100">Clinical Intelligence Platform</p>
+          <p className="text-sm text-slate-400">Clinical Intelligence Platform</p>
         </div>
 
         <div className="p-8 pb-4">
